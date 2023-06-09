@@ -7,7 +7,6 @@ archives: Archives
 about: About
 contact: Contact
 friends: Friends
-galleries: galleries
 startRead: Start
 recommendedPosts: Recommended Posts
 publishDate: Publish Date
@@ -39,7 +38,7 @@ average: Average
 myProjects: My Projects
 mySkills: My Skills
 otherSkills: Other Skills
-gallery: Gallery
+gallery: gallery
 notag: No tag
 from: From
 reprint: Reprint policy

@@ -22,6 +22,9 @@ menu:
   Friends:
     url: /friends
     icon: fas fa-address-book
+  Gallery:
+    url: /gallery
+    icon: fas fa-image
   # 二级菜单写法如下
   #Medias:
   #  icon: fas fa-list
@@ -36,7 +39,7 @@ menu:
   #      url: /books
   #      icon: fas fa-book
   #    - name: Galleries
-  #      url: /galleries
+  #      url: /gallery
   #      icon: fas fa-image
 
 # Website start time.
@@ -309,7 +312,7 @@ mySkills:
 # If you don't want to display this `Gallery` content, you can deactivate or delete this configuration.
 # 在“关于”页面配置"我的相册"图片，如果你不需要这些信息则可以将其设置为不激活或者将其删除.
 myGallery:
-  enable: false
+  enable: true
   data:
     - /medias/featureimages/0.jpg
     - /medias/featureimages/1.jpg
@@ -488,6 +491,7 @@ libs:
     mermaid: /libs/mermaid/mermaid.min.css
     fancybox: /libs/fancybox/jquery.fancybox.css
     justifiedGallery: /libs/justifiedGallery/justifiedGallery.min.css
+    baguetteBoxCss: /libs/MyGallery/css/baguetteBox.css
   js:
     matery: /js/matery.js
     jquery: /libs/jquery/jquery-3.6.0.min.js  #3.6.0 20211109
@@ -528,6 +532,7 @@ libs:
     codelang: /libs/codeBlock/codeLang.js
     codecopy: /libs/codeBlock/codeCopy.js
     codeshrink: /libs/codeBlock/codeShrink.js
+    baguetteBoxJs: /libs/MyGallery/js/baguetteBox.js
 
 # The post featured images that needs to be displayed when there is no image.
 # 无文章特色图片时需要显示的文章特色图片.
@@ -756,3 +761,8 @@ mermaid: ## mermaid url https://github.com/knsv/mermaid
   version: "latest" # default v7.1.2
   options:  # find more api options from https://github.com/knsv/mermaid/blob/master/src/mermaidAPI.js
     #startOnload: true  // default true
+
+gallery:
+  title: 光影流年 # 标题
+  icon: fa         #这个显示相册页面的图标
+  icon2: fa        #这个显示自己的具体相册里面的相册的图标
