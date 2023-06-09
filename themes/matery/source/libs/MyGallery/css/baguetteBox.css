@@ -146,17 +146,17 @@
      position: absolute;
      left: 6px;
      top: 4px;
- }  
+ }
  .baguetteBox-button svg{
     left: 13px;
     top: 18px;
- } 
+ }
 .baguetteBox-button#previous-button svg {
     position: absolute;
     left: 4px;
     /*top: 18px;*/
     top: calc(50% - 30px);
-}}
+}
 
 .baguetteBox-spinner {
   width: 40px;
