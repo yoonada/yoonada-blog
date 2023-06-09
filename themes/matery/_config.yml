@@ -312,7 +312,7 @@ mySkills:
 # If you don't want to display this `Gallery` content, you can deactivate or delete this configuration.
 # 在“关于”页面配置"我的相册"图片，如果你不需要这些信息则可以将其设置为不激活或者将其删除.
 myGallery:
-  enable: true
+  enable: false
   data:
     - /medias/featureimages/0.jpg
     - /medias/featureimages/1.jpg
@@ -763,6 +763,6 @@ mermaid: ## mermaid url https://github.com/knsv/mermaid
     #startOnload: true  // default true
 
 gallery:
-  title: 光影流年 # 标题
+  title: 相册 # 标题
   icon: fa         #这个显示相册页面的图标
   icon2: fa        #这个显示自己的具体相册里面的相册的图标
