@@ -74,10 +74,10 @@ cover:
 # index page dream text,
 # 配置首页显示"梦想"的语句.
 dream:
-  enable: false
+  enable: true
   showTitle: true
-  title: 我的梦想
-  text: 不是每个人都应该像我这样去建造一座水晶大教堂，但是每个人都应该拥有自己的梦想，设计自己的梦想，追求自己的梦想，实现自己的梦想。梦想是生命的灵魂，是心灵的灯塔，是引导人走向成功的信仰。有了崇高的梦想，只要矢志不渝地追求，梦想就会成为现实，奋斗就会变成壮举，生命就会创造奇迹。——罗伯·舒乐
+  title: motto
+  text: 鲜衣怒马少年时，不负韶华行且知。
 
 # Whether to display the musics.
 # 是否在首页显示音乐.
@@ -562,31 +562,6 @@ featureImages:
 - https://images.yoonada.cn/featureimages/22.jpg
 - https://images.yoonada.cn/featureimages/23.jpg
 
-
-#- /medias/featureimages/0.jpg
-#- /medias/featureimages/1.jpg
-#- /medias/featureimages/2.jpg
-#- /medias/featureimages/3.jpg
-#- /medias/featureimages/4.jpg
-#- /medias/featureimages/5.jpg
-#- /medias/featureimages/6.jpg
-#- /medias/featureimages/7.jpg
-#- /medias/featureimages/8.jpg
-#- /medias/featureimages/9.jpg
-#- /medias/featureimages/10.jpg
-#- /medias/featureimages/11.jpg
-#- /medias/featureimages/12.jpg
-#- /medias/featureimages/13.jpg
-#- /medias/featureimages/14.jpg
-#- /medias/featureimages/15.jpg
-#- /medias/featureimages/16.jpg
-#- /medias/featureimages/17.jpg
-#- /medias/featureimages/18.jpg
-#- /medias/featureimages/19.jpg
-#- /medias/featureimages/20.jpg
-#- /medias/featureimages/21.jpg
-#- /medias/featureimages/22.jpg
-#- /medias/featureimages/23.jpg
 # default configs that the default policy for every articles/posts
 # default 配置文章的默认转载规则
 
@@ -659,15 +634,15 @@ addthis:
 # 打字效果副标题.
 # 如果有符号 ‘ ，请在 ’ 前面加上 \
 subtitle:
-  enable: false
+  enable: true
   loop: true # 是否循环
   showCursor: true # 是否显示光标
   startDelay: 300 # 开始延迟
   typeSpeed: 100 # 打字速度
   backSpeed: 80 # 删除速度
   sub:
-    - 为天地立心\，为生民立命\，为往圣继绝学\，为万世开太平
-    - To ordain conscience for Heaven and Earth\, To secure life and fortune for the people\, To continue lost teachings for past sages\, To establish peace for all future generations.
+    - 欢迎来到我的世界
+    - Welcome to my world
 # 手机二级菜单.
 navMenu:
   mleft: false # 二级侧栏子菜单是否对齐左边
@@ -684,9 +659,9 @@ banner:
 
 #ICP备案信息尾部显示
 icp:
-  enable: false
-  url: # 备案链接
-  text: # 备案信息
+  enable: true
+  url: https://beian.miit.gov.cn/
+  text: 粤ICP备20004989号-1
 
 # CDN访问加速
 # 第一次使用本功能，一定要先配置url，再`hexo cl && hexo g && hexo d`部署到GitHub的仓库，注意！必须是GitHub的仓库！
