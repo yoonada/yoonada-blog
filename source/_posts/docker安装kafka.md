@@ -1,3 +1,9 @@
+---
+title: docker安装kafka
+date: 2022-08-04 14:53:08
+tags: [docker, kafka]
+categories: 命令
+---
 ## 下载镜像
 
 ```sh
