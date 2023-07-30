@@ -158,3 +158,31 @@ T1 读取某个范围的数据，T2 在这个范围内**插入**新的数据，T
 ##### 表级锁和行级锁
 * 表级锁：粒度大，针对非索引字段加的锁，资源消耗少，加锁快，不会出现死锁，但高并发下效率极低。
 * 行级锁：粒度小，针对索引字段加的锁，只针对当前操作的行记录加锁，并发性高，但开销也大，会出现死锁。
+#### MySQL的日志
+
+* 错误日志（error log）：对MySQL的启动、运行、关闭过程进行记录。
+* 二进制日志（binary log，binlog）：主要记录的是**更改数据库数据**的SQL语句。
+* 一般查询日志（general query log）：已建立连接的客户端发送给MySQL服务器的所有SQL记录，因为SQL的量比较大，默认是不开启的，也不建议开启。
+* 慢查询日志（slow query log）：执行时间超过 long_query_time秒钟的查询，解决SQL慢查询问题的时候会用到。
+* 事务日志（redo log 和 undo log）：redo log是重做日志；undo log是回滚日志。
+* 中继日志（relay log）：relay log是复制过程中产生的日志，很多方面都跟binary log差不多。不过，relay log针对的是主从复制的从库。
+* DDL日志（metadata log）：DDL语句执行的元数据操作。
+
+#### binlog（二进制日志）
+
+##### binlog是什么
+
+binlog（binary log即二进制日志文件）：**主要记录了对MySQL数据库执行了更改的所有操作**（数据库执行的所有DDL和DML语句），包括表结构变更（CREATE、ALTER、DROP TABLE...）、表数据修改（INSERT、UPDATE、DELETE...），**但不包括SELECT、SHOW这类不会对数据库更改的操作**。
+
+即使表结构变更和表数据修改操作并未对数据库造成更改，依然会被记录进binlog。
+
+##### binlog的格式有哪几种
+
+* statement模式：每一条会修改数据的sql都会被记录在binlog中，如inserts、updates，deletes
+* row模式：
+
+##### binlog和redolog的区别
+
+* binlog主要用于数据库还原，属于数据级别的数据恢复，主从复制是binlog最常用的一个应用场景。redolog主要用于保证事务的持久性，属于事务级别的数据恢复。
+* redolog属于InnoDB引擎特有的，binlog属于所有存储引擎共有的，因为binlog是MySQL的Server层实现的。
+* redolog属于物理日志，主要记录的事某个页的修改。binlog属于逻辑日志，主要记录的是数据库执行的所有DDL和DML语句。
