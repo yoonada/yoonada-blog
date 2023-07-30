@@ -186,3 +186,6 @@ binlog（binary log即二进制日志文件）：**主要记录了对MySQL数据
 * binlog主要用于数据库还原，属于数据级别的数据恢复，主从复制是binlog最常用的一个应用场景。redolog主要用于保证事务的持久性，属于事务级别的数据恢复。
 * redolog属于InnoDB引擎特有的，binlog属于所有存储引擎共有的，因为binlog是MySQL的Server层实现的。
 * redolog属于物理日志，主要记录的事某个页的修改。binlog属于逻辑日志，主要记录的是数据库执行的所有DDL和DML语句。
+#### MVCC
+MVCC（Multi-Version Concurrency Control）是一种数据库事务并发控制机制，用于实现多个事务的并发执行而不产生冲突。MVCC通过维护数据的多个版本，为每个事务创建一个可见性视图，从而实现事务的隔离性和高并发性
+
