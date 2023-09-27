@@ -8,7 +8,7 @@ categories: [centos,ssh,frp]
 ## 含公网ip的服务器配置如下：
 ### 1、下载frp
 ```shell
-wget https://github.com/fatedier/frp/releases/download/v0.44.0/frp_0.44.0_linux_arm64.tar.gz
+wget https://github.com/fatedier/frp/releases/download/v0.44.0/frp_0.44.0_linux_amd64.tar.gz
 ```
 ### 2、解压
 ```shell
@@ -70,7 +70,7 @@ systemctl stop frps
 ## 客户端虚拟机配置如下：
 ### 1、下载frp
 ```shell
-wget https://github.com/fatedier/frp/releases/download/v0.44.0/frp_0.44.0_linux_arm64.tar.gz
+wget https://github.com/fatedier/frp/releases/download/v0.44.0/frp_0.44.0_linux_amd64.tar.gz
 ```
 ### 2、解压
 ```shell
