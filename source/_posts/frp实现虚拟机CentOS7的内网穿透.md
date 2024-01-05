@@ -1,10 +1,10 @@
 ---
-title: frp实现虚拟机centos的内网穿透
+title: frp实现虚拟机CentOS7的内网穿透
 date: 2022-09-21 18:13:49
-tags: [centos,ssh,frp]
-categories: [centos,ssh,frp]
+tags: [CentOS7,ssh,frp]
+categories: [CentOS7,ssh,frp]
 ---
-### 需要一台有公网ip的服务器和随便一台虚拟机centos
+### 需要一台有公网ip的服务器和随便一台虚拟机CentOS7
 ## 含公网ip的服务器配置如下：
 ### 1、下载frp
 ```shell

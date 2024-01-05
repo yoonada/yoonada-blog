@@ -1,8 +1,8 @@
 ---
-title: centos安装maven
+title: CentOS7安装maven
 date: 2022-08-04 15:22:00
-tags: [centos,maven]
-categories: centos
+tags: [CentOS7,maven]
+categories: CentOS7
 ---
 ## 进入目录
 ```shell

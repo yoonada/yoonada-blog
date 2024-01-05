@@ -1,32 +1,32 @@
 ---
 title: Hadoop集群搭建
 date: 2023-03-29 11:01:55
-tags: [Hadoop,centos,集群]
-categories: [Hadoop,centos,集群]
+tags: [Hadoop,CentOS7,集群]
+categories: [Hadoop,CentOS7,集群]
 ---
 ## 必备
-* 三台centos服务器：
+* 三台CentOS7服务器：
   * 192.168.253.130
   * 192.168.253.131
   * 192.168.253.132
 * 主机名修改对应为：
-  * centos-130 (主)
-  * centos-131 
-  * centos-132
+  * CentOS7-130 (主)
+  * CentOS7-131 
+  * CentOS7-132
 ## 安装（在130（主））
 ### 分别修改主机名
 eg.192.168.253.130将主机名修改为130
 ```shell
-hostnamectl set-hostname centos-130
+hostnamectl set-hostname CentOS7-130
 ```
 修改hosts文件
 ```shell
 vim /etc/hosts
 ```
 ```shell
-192.168.253.130 centos-130
-192.168.253.131 centos-131
-192.168.253.132 centos-132
+192.168.253.130 CentOS7-130
+192.168.253.131 CentOS7-131
+192.168.253.132 CentOS7-132
 ```
 重启一下吧，重新加载
 ```shell
@@ -36,7 +36,7 @@ reboot
 看之前的文章
 https://blog.yoonada.cn/2022/09/20/ssh-mian-mi-deng-lu-san-tai-xu-ni-ji-zhi-jian-liang-liang-mian-mi-deng-lu/
 #### 安装Hadoop
-下载并上传至centos的/usr/local/
+下载并上传至CentOS7的/usr/local/
 https://dlcdn.apache.org/hadoop/common/hadoop-3.3.5/hadoop-3.3.5.tar.gz
 
 解压
@@ -83,7 +83,7 @@ vim core-site.xml
 <configuration>
     <property>
         <name>fs.defaultFS</name>
-        <value>hdfs://centos-130:8020</value>
+        <value>hdfs://CentOS7-130:8020</value>
     </property>
     <property>
         <name>hadoop.tmp.dir</name>
@@ -103,11 +103,11 @@ vim hdfs-site.xml
 <configuration>
   <property>
     <name>dfs.namenode.http-address</name>
-    <value>centos-130:9870</value>
+    <value>CentOS7-130:9870</value>
   </property>
   <property>
     <name>dfs.namenode.secondary.http-address</name>
-    <value>centos-132:9868</value>
+    <value>CentOS7-132:9868</value>
   </property>
 </configuration>
 ```
@@ -125,7 +125,7 @@ vim yarn-site.xml
   <!-- 指定ResourceManager的地址-->
   <property>
     <name>yarn.resourcemanager.hostname</name>
-    <value>centos-131</value>
+    <value>CentOS7-131</value>
   </property>
   <!-- 环境变量的继承 -->
   <property>
@@ -151,9 +151,9 @@ vim mapred-site.xml
 vim /usr/local/hadoop-3.3.5/etc/hadoop/workers
 ```
 ```shell
-centos-130
-centos-131
-centos-132
+CentOS7-130
+CentOS7-131
+CentOS7-132
 ```
 ## 迁移（131、132）
 ### 安装rsync
@@ -178,7 +178,7 @@ then
 fi
 
 #2. 遍历集群所有机器
-for host in centos-130 centos-131 centos-132
+for host in CentOS7-130 CentOS7-131 CentOS7-132
 do
     echo ====================  $host  ====================
     #3. 遍历所有目录，挨个发送
@@ -218,7 +218,7 @@ xsync /etc/profile
 
 ### 集群架构图
 
-|      | centos-130             | centos-131                        | centos-132                      |
+|      | CentOS7-130             | CentOS7-131                        | CentOS7-132                      |
 | ---- | ---------------------- | --------------------------------- | ------------------------------- |
 | HDFS | **NameNode**、DataNode | DataNode                          | **SecondaryNameNode**、DataNode |
 | YARN | NodeManager            | **ResourcesManager**、NodeManager | NodeManager                     |

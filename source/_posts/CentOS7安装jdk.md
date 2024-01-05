@@ -1,14 +1,14 @@
 ---
-title: centos安装jdk
+title: CentOS7安装jdk
 date: 2022-08-04 17:16:07
-tags: [centos , jdk]
-categories: [centos , jdk]
+tags: [CentOS7 , jdk]
+categories: [CentOS7 , jdk]
 ---
 ```shell
 cd /usr/local
 ```
 ```shell
-wget https://yoondada.oss-cn-shenzhen.aliyuncs.com/software/centos/jdk-8u381-linux-x64.tar.gz
+wget https://yoondada.oss-cn-shenzhen.aliyuncs.com/software/CentOS7/jdk-8u381-linux-x64.tar.gz
 ```
 ```shell
 tar -zxvf jdk-8u381-linux-x64.tar.gz

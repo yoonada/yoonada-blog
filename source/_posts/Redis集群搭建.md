@@ -1,19 +1,19 @@
 ---
 title: Redis集群搭建
 date: 2023-03-24 14:18:32
-tags: [redis,centos,集群]
-categories: [redis,centos,集群]
+tags: [redis,CentOS7,集群]
+categories: [redis,CentOS7,集群]
 ---
 ## Redis集群搭建
 ### 参考文章
 https://cloud.tencent.com/developer/article/2124382?areaSource=&amp;traceId=
 ### 基础环境安装
-* centos服务器三台
+* CentOS7服务器三台
   * 192.168.253.130
   * 192.168.253.131
   * 192.168.253.132
-* 三台centos服务器都安装redis-5.0.14
-#### 基本安装（三台centos都安装）
+* 三台CentOS7服务器都安装redis-5.0.14
+#### 基本安装（三台CentOS7都安装）
 ```shell
 yum install gcc
 ```
@@ -52,7 +52,7 @@ cd /usr/local/redis-5.0.14/bin
 ```
 ### Redis的主从配置
 
-下面给对应的centos服务器进行配置，其中130为主机，131、132为从机
+下面给对应的CentOS7服务器进行配置，其中130为主机，131、132为从机
 
 |     ip地址      | 端口号 |      角色      |
 | :-------------: | :----: | :------------: |
@@ -100,7 +100,7 @@ replicaof 192.168.253.130 6379
 
 ### Redis的哨兵模式
 
-#### 搭建（三台centos对应的redis都进行如下操作）
+#### 搭建（三台CentOS7对应的redis都进行如下操作）
 
 ```shell
 cd /usr/local/redis-5.0.14

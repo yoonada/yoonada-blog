@@ -1,8 +1,8 @@
 ---
-title: centos常用命令
+title: CentOS7常用命令
 date: 2022-07-01 11:39:11
-tags: [centos,命令]
-categories: [centos,命令]
+tags: [CentOS7,命令]
+categories: [CentOS7,命令]
 ---
 ## 开启防火墙
 ```shell

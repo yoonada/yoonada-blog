@@ -1,8 +1,8 @@
 ---
-title: centos搭建k8s集群
+title: CentOS7搭建k8s集群
 date: 2023-05-04 16:44:10
-tags: [centos,k8s]
-categories: [centos,k8s]
+tags: [CentOS7,k8s]
+categories: [CentOS7,k8s]
 ---
 ## 环境准备
 至少准备三台服务器，其中一台作为master，另外两台作为worker
@@ -171,7 +171,7 @@ kubeadm join cluster-endpoint:6443 --token wc5gu7.s7pz9hmegoaoijeo \
 
 https://yoonada.oss-cn-shenzhen.aliyuncs.com/k8s/kubernetes/dashboard.yaml
 
-搜索 centos01，替换为自己的master的主机名
+搜索 CentOS701，替换为自己的master的主机名
 
 ![](https://yoonada.oss-cn-shenzhen.aliyuncs.com/images/image-20230504171217679.png)
 

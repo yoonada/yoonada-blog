@@ -1,8 +1,8 @@
 ---
-title: centos安装MySQL5.7
+title: CentOS7安装MySQL5.7
 date: 2023-11-24 08:52:58
-tags: [centos, MySQL]
-categories: [centos, MySQL]
+tags: [CentOS7, MySQL]
+categories: [CentOS7, MySQL]
 ---
 ```shell
 wget -i -c http://dev.mysql.com/get/mysql57-community-release-el7-10.noarch.rpm

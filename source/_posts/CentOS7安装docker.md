@@ -1,8 +1,8 @@
 ---
-title: centos安装docker
+title: CentOS7安装docker
 date: 2022-07-01 10:57:10
-tags: [centos,docker]
-categories: centos
+tags: [CentOS7,docker]
+categories: [CentOS7, docker]
 ---
 ## 卸载旧版本
 ```shell
@@ -22,13 +22,13 @@ sudo yum install -y yum-utils
 ```shell
 sudo yum-config-manager \
     --add-repo \
-    https://download.docker.com/linux/centos/docker-ce.repo
+    https://download.docker.com/linux/CentOS7/docker-ce.repo
 ```
 如果你的服务器连接官网超时，可换为阿里云的
 ```shell
 sudo yum-config-manager \
     --add-repo \
-	http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
+	http://mirrors.aliyun.com/docker-ce/linux/CentOS7/docker-ce.repo
 ```
 ## 安装docker引擎
 ```shell

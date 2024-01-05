@@ -1,10 +1,10 @@
 ---
 title: ssh免密登录（三台虚拟机之间两两免密登录）
 date: 2022-09-20 14:15:40
-tags: [centos,ssh]
-categories: [centos,ssh]
+tags: [CentOS7,ssh]
+categories: [CentOS7,ssh]
 ---
-# 现有三台centos的虚拟机，要求两两之间实现免密登录
+# 现有三台CentOS7的虚拟机，要求两两之间实现免密登录
 192.168.118.128
 192.168.118.129
 192.168.118.130

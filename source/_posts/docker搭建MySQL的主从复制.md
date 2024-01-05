@@ -1,8 +1,8 @@
 ---
 title: docker搭建MySQL的主从复制
 date: 2022-10-31 17:06:23
-tags: [centos,docker,MySQL]
-categories: [centos,docker,MySQL]
+tags: [CentOS7,docker,MySQL]
+categories: [CentOS7,docker,MySQL]
 ---
 ### docker拉取MySQL5.7的镜像
 ```shell

@@ -1,5 +1,5 @@
 ---
-title: centos安装jenkins
+title: CentOS7安装jenkins
 date: 2023-11-22 09:53:52
 tags:
 ---
