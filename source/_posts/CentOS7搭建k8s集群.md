@@ -94,7 +94,7 @@ echo "192.168.118.128  cluster-endpoint" >> /etc/hosts
 kubeadm init \
 --apiserver-advertise-address=192.168.118.128 \
 --control-plane-endpoint=cluster-endpoint \
---image-repository registry.cn-hangzhou.aliyuncs.com/lfy_k8s_images \
+--images-repository registry.cn-hangzhou.aliyuncs.com/lfy_k8s_images \
 --kubernetes-version v1.20.9 \
 --service-cidr=10.96.0.0/16 \
 --pod-network-cidr=192.168.0.0/16

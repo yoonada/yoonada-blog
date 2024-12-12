@@ -275,7 +275,7 @@ menu:
         icon: fas fa-book
       - name: Galleries
         url: /gallery
-        icon: fas fa-image
+        icon: fas fa-images
 ```
 
 

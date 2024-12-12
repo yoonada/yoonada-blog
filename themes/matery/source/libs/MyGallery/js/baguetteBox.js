@@ -45,7 +45,7 @@
             animation: 'slideIn',
             afterShow: null,
             afterHide: null,
-            // callback when image changes with `currentIndex` and `imagesElements.length` as parameters
+            // callback when images changes with `currentIndex` and `imagesElements.length` as parameters
             onChange: null,
             overlayBackgroundColor: 'rgba(0,0,0,.8)'
         };
@@ -55,13 +55,13 @@
     var overlay, slider, previousButton, nextButton, closeButton;
     // An array with all images in the current gallery
     var currentGallery = [];
-    // Current image index inside the slider
+    // Current images index inside the slider
     var currentIndex = 0;
     // Touch event start position (for slide gesture)
     var touch = {};
     // If set to true ignore touch events because animation was already fired
     var touchFlag = false;
-    // Regex pattern to match image files
+    // Regex pattern to match images files
     var regex = /.+\.(gif|jpe?g|png|webp)/i;
     // Object of all used galleries
     var data = {};
@@ -166,7 +166,7 @@
     }
 
     function bindImageClickListeners(selector, userOptions) {
-        // For each gallery bind a click event to every image inside it
+        // For each gallery bind a click event to every images inside it
         var galleryNodeList = document.querySelectorAll(selector);
         var selectorData = {
             galleries: [],
@@ -340,7 +340,7 @@
         // Prepare and append images containers and populate figure and captions IDs arrays
         for (var i = 0, fullImage; i < gallery.length; i++) {
             fullImage = create('div');
-            fullImage.className = 'full-image';
+            fullImage.className = 'full-images';
             fullImage.id = 'baguette-img-' + i;
             imagesElements.push(fullImage);
 
@@ -481,7 +481,7 @@
             return;
         }
 
-        // If image is already loaded run callback and return
+        // If images is already loaded run callback and return
         if (imageContainer.getElementsByTagName('img')[0]) {
             if (callback) {
                 callback();
@@ -536,14 +536,14 @@
         }
     }
 
-    // Get image source location, mostly used for responsive images
+    // Get images source location, mostly used for responsive images
     function getImageSrc(image) {
-        // Set default image path from href
+        // Set default images path from href
         var result = image.href;
-        // If dataset is supported find the most suitable image
+        // If dataset is supported find the most suitable images
         if (image.dataset) {
             var srcs = [];
-            // Get all possible image versions depending on the resolution
+            // Get all possible images versions depending on the resolution
             for (var item in image.dataset) {
                 if (item.substring(0, 3) === 'at-' && !isNaN(item.substring(3))) {
                     srcs[item.replace('at-', '')] = image.dataset[item];
@@ -555,7 +555,7 @@
             });
             // Get real screen resolution
             var width = window.innerWidth * window.devicePixelRatio;
-            // Find the first image bigger than or equal to the current width
+            // Find the first images bigger than or equal to the current width
             var i = 0;
             while (i < keys.length - 1 && keys[i] < width) {
                 i++;
@@ -568,7 +568,7 @@
     // Return false at the right end of the gallery
     function showNextImage() {
         var returnValue;
-        // Check if next image exists
+        // Check if next images exists
         if (currentIndex <= imagesElements.length - 2) {
             currentIndex++;
             updateOffset();
@@ -590,7 +590,7 @@
     // Return false at the left end of the gallery
     function showPreviousImage() {
         var returnValue;
-        // Check if previous image exists
+        // Check if previous images exists
         if (currentIndex >= 1) {
             currentIndex--;
             updateOffset();

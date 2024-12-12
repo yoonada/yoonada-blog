@@ -24,7 +24,7 @@ menu:
     icon: fas fa-address-book
   Gallery:
     url: /gallery
-    icon: fas fa-image
+    icon: fas fa-images
   # 二级菜单写法如下
   #Medias:
   #  icon: fas fa-list
@@ -40,7 +40,7 @@ menu:
   #      icon: fas fa-book
   #    - name: Galleries
   #      url: /gallery
-  #      icon: fas fa-image
+  #      icon: fas fa-images
 
 # Website start time.
 # 站点运行开始时间.
@@ -227,7 +227,7 @@ postInfo:
   min2read: true # 阅读时长.
   readCount: true # 阅读次数.
 
-# Whether to activate the 'love' effect of clicking on the page.
+# Whether to activate the 'Love' effect of clicking on the page.
 # 是否激活点击页面的'爱心'效果，默认激活.
 clicklove:
   enable: true
@@ -535,33 +535,53 @@ libs:
     codeshrink: /libs/codeBlock/codeShrink.js
     baguetteBoxJs: /libs/MyGallery/js/baguetteBox.js
 
-# The post featured images that needs to be displayed when there is no image.
+# The post featured images that needs to be displayed when there is no images.
 # 无文章特色图片时需要显示的文章特色图片.
 featureImages:
-- https://images.yoonada.cn/featureimages/0.jpg
-- https://images.yoonada.cn/featureimages/1.jpg
-- https://images.yoonada.cn/featureimages/2.jpg
-- https://images.yoonada.cn/featureimages/3.jpg
-- https://images.yoonada.cn/featureimages/4.jpg
-- https://images.yoonada.cn/featureimages/5.jpg
-- https://images.yoonada.cn/featureimages/6.jpg
-- https://images.yoonada.cn/featureimages/7.jpg
-- https://images.yoonada.cn/featureimages/8.jpg
-- https://images.yoonada.cn/featureimages/9.jpg
-- https://images.yoonada.cn/featureimages/10.jpg
-- https://images.yoonada.cn/featureimages/11.jpg
-- https://images.yoonada.cn/featureimages/12.jpg
-- https://images.yoonada.cn/featureimages/13.jpg
-- https://images.yoonada.cn/featureimages/14.jpg
-- https://images.yoonada.cn/featureimages/15.jpg
-- https://images.yoonada.cn/featureimages/16.jpg
-- https://images.yoonada.cn/featureimages/17.jpg
-- https://images.yoonada.cn/featureimages/18.jpg
-- https://images.yoonada.cn/featureimages/19.jpg
-- https://images.yoonada.cn/featureimages/20.jpg
-- https://images.yoonada.cn/featureimages/21.jpg
-- https://images.yoonada.cn/featureimages/22.jpg
-- https://images.yoonada.cn/featureimages/23.jpg
+#- https://images.yoonada.cn/featureimages/1.jpg
+#- https://images.yoonada.cn/featureimages/2.jpg
+#- https://images.yoonada.cn/featureimages/3.jpg
+#- https://images.yoonada.cn/featureimages/4.jpg
+#- https://images.yoonada.cn/featureimages/5.jpg
+#- https://images.yoonada.cn/featureimages/6.jpg
+#- https://images.yoonada.cn/featureimages/7.jpg
+#- https://images.yoonada.cn/featureimages/8.jpg
+#- https://images.yoonada.cn/featureimages/9.jpg
+#- https://images.yoonada.cn/featureimages/10.jpg
+#- https://images.yoonada.cn/featureimages/11.jpg
+#- https://images.yoonada.cn/featureimages/12.jpg
+#- https://images.yoonada.cn/featureimages/13.jpg
+#- https://images.yoonada.cn/featureimages/14.jpg
+#- https://images.yoonada.cn/featureimages/15.jpg
+#- https://images.yoonada.cn/featureimages/16.jpg
+#- https://images.yoonada.cn/featureimages/17.jpg
+#- https://images.yoonada.cn/featureimages/18.jpg
+#- https://images.yoonada.cn/featureimages/19.jpg
+#- https://images.yoonada.cn/featureimages/20.jpg
+#- https://images.yoonada.cn/featureimages/21.jpg
+#- https://images.yoonada.cn/featureimages/22.jpg
+#- https://images.yoonada.cn/featureimages/23.jpg
+
+
+#- https://images.yoonada.cn/featureimages/000001.jpg
+#- https://images.yoonada.cn/featureimages/000002.jpg
+#- https://images.yoonada.cn/featureimages/000003.jpg
+#- https://images.yoonada.cn/featureimages/000004.jpg
+#- https://images.yoonada.cn/featureimages/000005.jpg
+#- https://images.yoonada.cn/featureimages/000006.jpg
+#- https://images.yoonada.cn/featureimages/000007.jpg
+#- https://images.yoonada.cn/featureimages/000008.jpg
+#- https://images.yoonada.cn/featureimages/000009.jpg
+
+  - /medias/images/000001.jpg
+  - /medias/images/000002.jpg
+  - /medias/images/000003.jpg
+  - /medias/images/000004.jpg
+  - /medias/images/000005.jpg
+  - /medias/images/000006.jpg
+  - /medias/images/000007.jpg
+  - /medias/images/000008.jpg
+  - /medias/images/000009.jpg
 
 # default configs that the default policy for every articles/posts
 # default 配置文章的默认转载规则
