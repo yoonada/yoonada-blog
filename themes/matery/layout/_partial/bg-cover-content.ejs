@@ -37,16 +37,12 @@
 
 <% if (theme.banner.enable) { %>
     <script>
-        // 每天切换 banner 图.  Switch banner images every day.
+        // 每天切换 banner 图.  Switch banner image every day.
         var bannerUrl = "<%- theme.jsDelivr.url %><%- url_for('/medias/banner/') %>" + new Date().getDay() + '.jpg';
         $('.bg-cover').css('background-image', 'url(' + bannerUrl + ')');
     </script>
 <% } else { %>
-<!--    <script>-->
-<!--        $('.bg-cover').css('background-images', 'url(https://images.yoonada.cn/featureimages/7.jpg)');-->
-<!--    </script>-->
-<script>
-    $('.bg-cover').css('background-image', 'url(/medias/banner/index.jpg)');
-</script>
-
+    <script>
+        $('.bg-cover').css('background-image', 'url(https://images.yoonada.cn/featureimages/8.jpg)');
+    </script>
 <% } %>

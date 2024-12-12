@@ -563,25 +563,25 @@ featureImages:
 #- https://images.yoonada.cn/featureimages/23.jpg
 
 
-#- https://images.yoonada.cn/featureimages/000001.jpg
-#- https://images.yoonada.cn/featureimages/000002.jpg
-#- https://images.yoonada.cn/featureimages/000003.jpg
-#- https://images.yoonada.cn/featureimages/000004.jpg
-#- https://images.yoonada.cn/featureimages/000005.jpg
-#- https://images.yoonada.cn/featureimages/000006.jpg
-#- https://images.yoonada.cn/featureimages/000007.jpg
-#- https://images.yoonada.cn/featureimages/000008.jpg
-#- https://images.yoonada.cn/featureimages/000009.jpg
+- https://images.yoonada.cn/featureimages/000001.jpg
+- https://images.yoonada.cn/featureimages/000002.jpg
+- https://images.yoonada.cn/featureimages/000003.jpg
+- https://images.yoonada.cn/featureimages/000004.jpg
+- https://images.yoonada.cn/featureimages/000005.jpg
+- https://images.yoonada.cn/featureimages/000006.jpg
+- https://images.yoonada.cn/featureimages/000007.jpg
+- https://images.yoonada.cn/featureimages/000008.jpg
+- https://images.yoonada.cn/featureimages/000009.jpg
 
-  - /medias/images/000001.jpg
-  - /medias/images/000002.jpg
-  - /medias/images/000003.jpg
-  - /medias/images/000004.jpg
-  - /medias/images/000005.jpg
-  - /medias/images/000006.jpg
-  - /medias/images/000007.jpg
-  - /medias/images/000008.jpg
-  - /medias/images/000009.jpg
+#  - /medias/images/000001.jpg
+#  - /medias/images/000002.jpg
+#  - /medias/images/000003.jpg
+#  - /medias/images/000004.jpg
+#  - /medias/images/000005.jpg
+#  - /medias/images/000006.jpg
+#  - /medias/images/000007.jpg
+#  - /medias/images/000008.jpg
+#  - /medias/images/000009.jpg
 
 # default configs that the default policy for every articles/posts
 # default 配置文章的默认转载规则

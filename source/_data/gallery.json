@@ -1,13 +1,19 @@
 [
   {
     "name": "Love",
-    "cover": "https://images.yoonada.cn/gallery/HongKong/1.jpg",
+    "cover": "https://images.yoonada.cn/gallery/Love/1.jpg",
     "date": "2024.09",
     "description": "Love",
     "url_name": "Love",
     "album": [
       {
-        "img_url": "https://images.yoonada.cn/gallery/HongKong/1.jpg"
+        "img_url": "https://images.yoonada.cn/gallery/Love/1.jpg"
+      },
+      {
+        "img_url": "https://images.yoonada.cn/gallery/Love/2.jpg"
+      },
+      {
+        "img_url": "https://images.yoonada.cn/gallery/Love/3.jpg"
       }
     ]
   },
