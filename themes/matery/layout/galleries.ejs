@@ -1,0 +1,136 @@
+<link rel="stylesheet" href="<%- theme.jsDelivr.url %><%- url_for(theme.libs.css.gallery) %>">
+
+<!-- <%- partial('_partial/bg-cover') %> -->
+
+<!-- 该主题自带的lightGallery.js在图片多的时候会很卡，所以弃用，使用了一个我在网上找的baguetteBox，很轻量级，就是功能少了点 -->
+<style>
+    .my-gallery .photo img {
+        transition: all 0.6s ease-in-out;
+    }
+    .my-gallery .photo:hover img {
+        opacity: 0.6;
+        transform: scale(1.05);
+    }
+    .my-gallery {
+        margin: 20px auto;
+    }
+    .miaoshus .title {
+        font-family: MV Boli;
+    }
+    .miaoshus {
+        padding: 20px;
+        border: 1px dashed #e6e6e6;
+        color: #969696;
+        position: relative;
+        display: inline-block;
+        width: 75%;
+        background: #fbfbfb50;
+        border-radius: 10px;
+        font-size: 16px;
+        margin: 24px auto 12px;
+
+    }
+    body.dark .miaoshus {
+        background: 0 0;
+        border: 1px dashed #888;
+    }
+    body {
+        overflow: visible!important;
+    }
+    .box {
+        position: relative;
+    }
+    .box img {
+        width: 350px;
+        vertical-align: top;
+        padding: 8px;
+        border-radius: 10px;
+        transition: all 0.5s;
+    }
+    .box img:hover {
+        transform: scale(1.05);
+    }
+    .page-footer {
+        display: none
+    }
+    body {
+        overflow-y: visible!important;
+    }
+    header {
+        background-color: #000;
+    }
+    .biaotiss {
+        font-family: MV Boli;
+    }
+    @media only screen and (max-width: 1058px) {
+        .box {
+            margin-left: 145px;
+        }
+    }
+    @media only screen and (max-width: 770px) {
+        .box {
+            margin-left: 15px;
+        }
+    }
+    @media only screen and (max-width: 500px) {
+        #previous-button, #next-button {
+            display: none;
+        }
+    }
+    @media only screen and (max-width: 380px) {
+        .box {
+            margin-left: -5px;
+        }
+    }
+    @media only screen and (max-width: 323px) {
+        .box img {
+            width: 296px;
+            left: 0;
+        }
+    }
+</style>
+
+<div class="tag-title center-align">
+    <div class="miaoshus">
+        <div class="title center-align">
+            “ <% if (is_home() && config.subtitle && config.subtitle.length > 0) { %>
+                <%= config.subtitle %>
+            <% } else { %>
+                <%= page.title %>
+            <% } %> ”
+        </div>
+    </div>
+</div>
+
+<main class="content">
+    <div class="container">
+        <% if (site.data && site.data.gallery) { %>
+            <% var galleries = site.data.gallery;
+                var pageTitle = page.title;
+                function getCurrentGallery(galleries, pageTitle) {
+                    for (let i = 0; i < galleries.length; i++) {
+                        if (galleries[i]['name'] == pageTitle) {
+                            return galleries[i];
+                        }
+                    }
+                }
+                var currentGallery = getCurrentGallery(galleries, pageTitle);
+                var photos = currentGallery.album;
+            %>
+            <div class="gallery-wrapper row">
+                <% for (var i = 0, len = photos.length; i < len; i++) { %>
+                    <% var my_album = photos[i]; %>
+                    <div class="col s6 m4 l4 xl3 gallery-box">
+                        <a href="<%- my_album.img_url %>" class="gallery-item" data-aos="zoom-in-up">
+                            <div class="gallery-cover-box" style="background-image: url(<%- my_album.img_url %>)">
+                            </div>
+                            <p class="gallery-name">
+                                <%- my_album.title %>
+                            </p>
+                        </a>
+                    </div>
+                <% } %>
+            </div>
+        <% } %>
+    </div>
+</main>
