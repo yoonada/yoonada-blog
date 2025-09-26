@@ -136,8 +136,8 @@
     
     <!-- 图片预览模态框 -->
     <div id="imagePreviewModal" style="display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.9); cursor: pointer;" onclick="closeImagePreview()">
-        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); max-width: 90%; max-height: 90%;">
-            <img id="previewImage" src="" style="max-width: 100%; max-height: 100%; object-fit: contain;" onclick="event.stopPropagation();" />
+        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 90%; height: 90%; display: flex; align-items: center; justify-content: center;">
+            <img id="previewImage" src="" style="max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain;" onclick="event.stopPropagation();" />
         </div>
         
         <!-- 左右导航按钮 -->
@@ -146,6 +146,9 @@
         
         <!-- 关闭按钮 -->
         <div style="position: absolute; top: 20px; right: 30px; color: white; font-size: 30px; cursor: pointer;" onclick="closeImagePreview()">&times;</div>
+        
+        <!-- 下载按钮 -->
+        <div id="downloadBtn" style="position: absolute; top: 20px; right: 80px; color: white; font-size: 24px; cursor: pointer; padding: 5px;" onclick="event.stopPropagation(); downloadCurrentImage();" title="下载图片">⬇</div>
         
         <!-- 图片计数器 -->
         <div id="imageCounter" style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); color: white; font-size: 16px;"></div>
@@ -198,6 +201,16 @@
         function updateNavigationButtons() {
             document.getElementById('prevBtn').style.opacity = currentImageIndex > 0 ? '1' : '0.3';
             document.getElementById('nextBtn').style.opacity = currentImageIndex < imageUrls.length - 1 ? '1' : '0.3';
+        }
+        
+        function downloadCurrentImage() {
+            var currentImageUrl = imageUrls[currentImageIndex];
+            var link = document.createElement('a');
+            link.href = currentImageUrl;
+            link.download = 'image_' + (currentImageIndex + 1) + '.jpg';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
         }
         
         // 键盘导航
