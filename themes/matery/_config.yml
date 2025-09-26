@@ -258,7 +258,7 @@ snowdown:
 # profile in about page, including avatars, career, and personal introductions.
 # 在”关于”页面中配置个人信息，包括头像、职业和个人介绍.
 profile:
-  avatar: https://images.yoonada.cn/featureimages/ava.jpg
+  avatar: https://yoonada.oss-cn-shenzhen.aliyuncs.com/blog/images/featureimages/ava.jpg
   career: Java开发工程师
   introduction:
 
@@ -539,40 +539,40 @@ libs:
 # The post featured images that needs to be displayed when there is no images.
 # 无文章特色图片时需要显示的文章特色图片.
 featureImages:
-#- https://images.yoonada.cn/featureimages/1.jpg
-#- https://images.yoonada.cn/featureimages/2.jpg
-#- https://images.yoonada.cn/featureimages/3.jpg
-#- https://images.yoonada.cn/featureimages/4.jpg
-#- https://images.yoonada.cn/featureimages/5.jpg
-#- https://images.yoonada.cn/featureimages/6.jpg
-#- https://images.yoonada.cn/featureimages/7.jpg
-#- https://images.yoonada.cn/featureimages/8.jpg
-#- https://images.yoonada.cn/featureimages/9.jpg
-#- https://images.yoonada.cn/featureimages/10.jpg
-#- https://images.yoonada.cn/featureimages/11.jpg
-#- https://images.yoonada.cn/featureimages/12.jpg
-#- https://images.yoonada.cn/featureimages/13.jpg
-#- https://images.yoonada.cn/featureimages/14.jpg
-#- https://images.yoonada.cn/featureimages/15.jpg
-#- https://images.yoonada.cn/featureimages/16.jpg
-#- https://images.yoonada.cn/featureimages/17.jpg
-#- https://images.yoonada.cn/featureimages/18.jpg
-#- https://images.yoonada.cn/featureimages/19.jpg
-#- https://images.yoonada.cn/featureimages/20.jpg
-#- https://images.yoonada.cn/featureimages/21.jpg
-#- https://images.yoonada.cn/featureimages/22.jpg
-#- https://images.yoonada.cn/featureimages/23.jpg
+#- https://yoonada.oss-cn-shenzhen.aliyuncs.com/blog/images/featureimages/1.jpg
+#- https://yoonada.oss-cn-shenzhen.aliyuncs.com/blog/images/featureimages/2.jpg
+#- https://yoonada.oss-cn-shenzhen.aliyuncs.com/blog/images/featureimages/3.jpg
+#- https://yoonada.oss-cn-shenzhen.aliyuncs.com/blog/images/featureimages/4.jpg
+#- https://yoonada.oss-cn-shenzhen.aliyuncs.com/blog/images/featureimages/5.jpg
+#- https://yoonada.oss-cn-shenzhen.aliyuncs.com/blog/images/featureimages/6.jpg
+#- https://yoonada.oss-cn-shenzhen.aliyuncs.com/blog/images/featureimages/7.jpg
+#- https://yoonada.oss-cn-shenzhen.aliyuncs.com/blog/images/featureimages/8.jpg
+#- https://yoonada.oss-cn-shenzhen.aliyuncs.com/blog/images/featureimages/9.jpg
+#- https://yoonada.oss-cn-shenzhen.aliyuncs.com/blog/images/featureimages/10.jpg
+#- https://yoonada.oss-cn-shenzhen.aliyuncs.com/blog/images/featureimages/11.jpg
+#- https://yoonada.oss-cn-shenzhen.aliyuncs.com/blog/images/featureimages/12.jpg
+#- https://yoonada.oss-cn-shenzhen.aliyuncs.com/blog/images/featureimages/13.jpg
+#- https://yoonada.oss-cn-shenzhen.aliyuncs.com/blog/images/featureimages/14.jpg
+#- https://yoonada.oss-cn-shenzhen.aliyuncs.com/blog/images/featureimages/15.jpg
+#- https://yoonada.oss-cn-shenzhen.aliyuncs.com/blog/images/featureimages/16.jpg
+#- https://yoonada.oss-cn-shenzhen.aliyuncs.com/blog/images/featureimages/17.jpg
+#- https://yoonada.oss-cn-shenzhen.aliyuncs.com/blog/images/featureimages/18.jpg
+#- https://yoonada.oss-cn-shenzhen.aliyuncs.com/blog/images/featureimages/19.jpg
+#- https://yoonada.oss-cn-shenzhen.aliyuncs.com/blog/images/featureimages/20.jpg
+#- https://yoonada.oss-cn-shenzhen.aliyuncs.com/blog/images/featureimages/21.jpg
+#- https://yoonada.oss-cn-shenzhen.aliyuncs.com/blog/images/featureimages/22.jpg
+#- https://yoonada.oss-cn-shenzhen.aliyuncs.com/blog/images/featureimages/23.jpg
 
 
-- https://images.yoonada.cn/featureimages/000001.jpg
-- https://images.yoonada.cn/featureimages/000002.jpg
-- https://images.yoonada.cn/featureimages/000003.jpg
-- https://images.yoonada.cn/featureimages/000004.jpg
-- https://images.yoonada.cn/featureimages/000005.jpg
-- https://images.yoonada.cn/featureimages/000006.jpg
-- https://images.yoonada.cn/featureimages/000007.jpg
-- https://images.yoonada.cn/featureimages/000008.jpg
-- https://images.yoonada.cn/featureimages/000009.jpg
+- https://yoonada.oss-cn-shenzhen.aliyuncs.com/blog/images/featureimages/000001.jpg
+- https://yoonada.oss-cn-shenzhen.aliyuncs.com/blog/images/featureimages/000002.jpg
+- https://yoonada.oss-cn-shenzhen.aliyuncs.com/blog/images/featureimages/000003.jpg
+- https://yoonada.oss-cn-shenzhen.aliyuncs.com/blog/images/featureimages/000004.jpg
+- https://yoonada.oss-cn-shenzhen.aliyuncs.com/blog/images/featureimages/000005.jpg
+- https://yoonada.oss-cn-shenzhen.aliyuncs.com/blog/images/featureimages/000006.jpg
+- https://yoonada.oss-cn-shenzhen.aliyuncs.com/blog/images/featureimages/000007.jpg
+- https://yoonada.oss-cn-shenzhen.aliyuncs.com/blog/images/featureimages/000008.jpg
+- https://yoonada.oss-cn-shenzhen.aliyuncs.com/blog/images/featureimages/000009.jpg
 
 #  - /medias/images/000001.jpg
 #  - /medias/images/000002.jpg
