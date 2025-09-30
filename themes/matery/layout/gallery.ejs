@@ -48,6 +48,21 @@
         box-shadow: 1px 2px 2px 0 #aaa;
         transition: all .4s cubic-bezier(.63,.15,.03,1.12);
         margin-bottom: 20px;
+        overflow: hidden;
+    }
+    .img-item img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+    }
+    .img-item:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    }
+    .img-item:hover img {
+        transform: scale(1.05);
     }
     .photo:nth-child(odd) {
         transform: rotateZ(-5deg);
@@ -84,7 +99,11 @@
     }
     .my-gallery .photo img {
         border-radius: 10px;
-        height: 240px;
+        height: auto;
+        min-height: 200px;
+        max-height: 300px;
+        width: 100%;
+        object-fit: cover;
     }
     .card .card-content {
         padding: 24px 24px 24px 24px;
@@ -170,7 +189,7 @@
                                 <div class="img-item">
                                     <a href="./<%- photo.url_name %>">
 
-                                        <img src="/medias/loading.svg" data-src="<%- photo.cover %>" class="responsive-img" alt="img"+<%- i %> />
+                                        <img src="/medias/loading.svg" data-src="<%- photo.cover %>" class="responsive-img" alt="img"+<%- i %> style="width: 100%; height: auto; object-fit: cover;" />
                                         <div class="biaotiss">
                                             “ <%- photo.name %> ”<br>“ <%- photo.date %> ”
                                         </div>

@@ -4,16 +4,6 @@
 
 <!-- 该主题自带的lightGallery.js在图片多的时候会很卡，所以弃用，使用了一个我在网上找的baguetteBox，很轻量级，就是功能少了点 -->
 <style>
-    .my-gallery .photo img {
-        transition: all 0.6s ease-in-out;
-    }
-    .my-gallery .photo:hover img {
-        opacity: 0.6;
-        transform: scale(1.05);
-    }
-    .my-gallery {
-        margin: 20px auto;
-    }
     .miaoshus .title {
         font-family: MV Boli;
     }
@@ -28,7 +18,6 @@
         border-radius: 10px;
         font-size: 16px;
         margin: 24px auto 12px;
-
     }
     body.dark .miaoshus {
         background: 0 0;
@@ -36,25 +25,10 @@
     }
     body {
         overflow: visible!important;
-    }
-    .box {
-        position: relative;
-    }
-    .box img {
-        width: 350px;
-        vertical-align: top;
-        padding: 8px;
-        border-radius: 10px;
-        transition: all 0.5s;
-    }
-    .box img:hover {
-        transform: scale(1.05);
+        overflow-y: visible!important;
     }
     .page-footer {
         display: none
-    }
-    body {
-        overflow-y: visible!important;
     }
     header {
         background-color: #000;
@@ -62,30 +36,162 @@
     .biaotiss {
         font-family: MV Boli;
     }
-    @media only screen and (max-width: 1058px) {
-        .box {
-            margin-left: 145px;
+    
+    /* iOS风格瀑布流布局 */
+    .ios-gallery {
+        column-count: 4;
+        column-gap: 8px;
+        padding: 10px;
+        max-width: 1200px;
+        margin: 0 auto;
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out;
+    }
+    
+    .ios-gallery.loaded {
+        opacity: 1;
+    }
+    
+    .ios-gallery-item {
+        display: inline-block;
+        width: 100%;
+        margin-bottom: 8px;
+        break-inside: avoid;
+        position: relative;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        transition: all 0.3s ease;
+        cursor: pointer;
+        background-color: #f5f5f5;
+        min-height: 150px;
+    }
+    
+    .ios-gallery-item:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    }
+    
+    .ios-gallery-item img {
+        width: 100%;
+        height: auto;
+        display: block;
+        transition: all 0.3s ease;
+        opacity: 0;
+    }
+    
+    .ios-gallery-item img.loaded {
+        opacity: 1;
+    }
+    
+    .ios-gallery-item:hover img {
+        transform: scale(1.02);
+    }
+    
+    .ios-gallery-item .gallery-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(transparent, rgba(0,0,0,0.7));
+        color: white;
+        padding: 15px 10px 10px;
+        font-size: 12px;
+        text-align: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+    
+    .ios-gallery-item:hover .gallery-overlay {
+        opacity: 1;
+    }
+    
+    /* 加载动画 - 优化版本 */
+    .ios-gallery-item::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 20px;
+        height: 20px;
+        margin: -10px 0 0 -10px;
+        border: 2px solid #ddd;
+        border-top: 2px solid #666;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        opacity: 1;
+        transition: opacity 0.3s ease;
+        z-index: 2;
+    }
+    
+    .ios-gallery-item.image-loaded::before {
+        opacity: 0;
+    }
+    
+    /* 图片占位背景 */
+    .ios-gallery-item {
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        position: relative;
+    }
+    
+    /* 加载进度指示器 */
+    .loading-progress {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: rgba(0, 0, 0, 0.8);
+        color: white;
+        padding: 8px 12px;
+        border-radius: 20px;
+        font-size: 12px;
+        z-index: 1000;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+    
+    .loading-progress.show {
+        opacity: 1;
+    }
+    
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+    
+    /* 响应式设计 */
+    @media only screen and (max-width: 1200px) {
+        .ios-gallery {
+            column-count: 3;
+            padding: 8px;
         }
     }
-    @media only screen and (max-width: 770px) {
-        .box {
-            margin-left: 15px;
+    
+    @media only screen and (max-width: 768px) {
+        .ios-gallery {
+            column-count: 2;
+            column-gap: 6px;
+            padding: 6px;
+        }
+        .ios-gallery-item {
+            margin-bottom: 6px;
         }
     }
-    @media only screen and (max-width: 500px) {
-        #previous-button, #next-button {
-            display: none;
+    
+    @media only screen and (max-width: 480px) {
+        .ios-gallery {
+            column-count: 2;
+            column-gap: 4px;
+            padding: 4px;
+        }
+        .ios-gallery-item {
+            margin-bottom: 4px;
+            border-radius: 8px;
         }
     }
-    @media only screen and (max-width: 380px) {
-        .box {
-            margin-left: -5px;
-        }
-    }
-    @media only screen and (max-width: 323px) {
-        .box img {
-            width: 296px;
-            left: 0;
+    
+    @media only screen and (max-width: 320px) {
+        .ios-gallery {
+            column-count: 1;
         }
     }
 </style>
@@ -117,17 +223,19 @@
                 var currentGallery = getCurrentGallery(galleries, pageTitle);
                 var photos = currentGallery.album;
             %>
-            <div class="gallery-wrapper row">
+            <!-- 加载进度指示器 -->
+            <div id="loadingProgress" class="loading-progress">
+                <span id="progressText">加载中... 0%</span>
+            </div>
+            
+            <div class="ios-gallery">
                 <% for (var i = 0, len = photos.length; i < len; i++) { %>
                     <% var my_album = photos[i]; %>
-                    <div class="col s6 m4 l4 xl3 gallery-box">
-                        <a href="javascript:void(0)" class="gallery-item" data-aos="zoom-in-up" onclick="openImagePreview(<%- i %>, '<%- my_album.img_url %>')">
-                            <div class="gallery-cover-box" style="background-image: url(<%- my_album.img_url %>)">
-                            </div>
-                            <p class="gallery-name">
-                                <%- my_album.title %>
-                            </p>
-                        </a>
+                    <div class="ios-gallery-item" data-aos="zoom-in-up" onclick="openImagePreview(<%- i %>, '<%- my_album.img_url %>')">
+                        <img src="<%- my_album.img_url %>" alt="<%- my_album.title %>" loading="lazy" />
+                        <div class="gallery-overlay">
+                            <%- my_album.title %>
+                        </div>
                     </div>
                 <% } %>
             </div>
@@ -161,6 +269,417 @@
                 '<%- photos[j].img_url %>'<% if (j < photos.length - 1) { %>,<% } %>
             <% } %>
         ];
+        
+        // 页面可见性API - 提前预加载
+        document.addEventListener('visibilitychange', function() {
+            if (!document.hidden) {
+                // 页面变为可见时，检查是否需要预加载
+                const gallery = document.querySelector('.ios-gallery');
+                if (gallery && !gallery.dataset.preloadStarted) {
+                    gallery.dataset.preloadStarted = 'true';
+                    
+                    // 收集所有相册页面的图片进行预加载
+                    const galleryItems = document.querySelectorAll('.ios-gallery-item img');
+                    galleryItems.forEach(function(img, index) {
+                        if (img.src && !ImageCacheManager.has(img.src)) {
+                            // 延迟预加载，避免阻塞主线程
+                            setTimeout(function() {
+                                ImageCacheManager.preload(img.src).catch(function() {
+                                    // 忽略预加载失败
+                                });
+                            }, index * 50); // 每50ms预加载一张
+                        }
+                    });
+                }
+            }
+        });
+
+        // 鼠标悬停预加载 - 用户可能要查看的图片
+        document.addEventListener('mouseover', function(e) {
+            if (e.target.matches('.ios-gallery-item img')) {
+                const img = e.target;
+                if (img.src && !ImageCacheManager.has(img.src)) {
+                    ImageCacheManager.preload(img.src).catch(function() {
+                        // 忽略预加载失败
+                    });
+                }
+            }
+        });
+
+        // 图片缓存管理器
+        const ImageCacheManager = {
+            cache: new Map(),
+            maxCacheSize: 100, // 最大缓存100张图片
+            cacheExpiry: 30 * 60 * 1000, // 30分钟过期
+            memoryThreshold: 50 * 1024 * 1024, // 50MB内存阈值
+            currentMemoryUsage: 0,
+            
+            // 获取缓存键
+            getCacheKey: function(src) {
+                return src;
+            },
+            
+            // 估算图片内存使用量
+            estimateImageSize: function(image) {
+                if (!image.naturalWidth || !image.naturalHeight) return 0;
+                // 估算：宽 × 高 × 4字节(RGBA) 
+                return image.naturalWidth * image.naturalHeight * 4;
+            },
+            
+            // 检查缓存是否存在且未过期
+            has: function(src) {
+                const key = this.getCacheKey(src);
+                const cached = this.cache.get(key);
+                if (!cached) return false;
+                
+                // 检查是否过期
+                if (Date.now() - cached.timestamp > this.cacheExpiry) {
+                    this.removeFromCache(key);
+                    return false;
+                }
+                return true;
+            },
+            
+            // 获取缓存的图片
+            get: function(src) {
+                const key = this.getCacheKey(src);
+                const cached = this.cache.get(key);
+                if (cached && Date.now() - cached.timestamp <= this.cacheExpiry) {
+                    // 更新访问时间（LRU策略）
+                    cached.lastAccessed = Date.now();
+                    return cached.image;
+                }
+                return null;
+            },
+            
+            // 从缓存中移除
+            removeFromCache: function(key) {
+                const cached = this.cache.get(key);
+                if (cached) {
+                    this.currentMemoryUsage -= cached.size;
+                    this.cache.delete(key);
+                }
+            },
+            
+            // 清理最少使用的缓存项（LRU）
+            cleanupLRU: function(targetSize) {
+                const entries = Array.from(this.cache.entries());
+                // 按最后访问时间排序
+                entries.sort((a, b) => a[1].lastAccessed - b[1].lastAccessed);
+                
+                let freedSize = 0;
+                for (const [key, cached] of entries) {
+                    if (freedSize >= targetSize) break;
+                    freedSize += cached.size;
+                    this.removeFromCache(key);
+                }
+            },
+            
+            // 设置缓存
+            set: function(src, image) {
+                const key = this.getCacheKey(src);
+                const imageSize = this.estimateImageSize(image);
+                
+                // 检查内存使用量
+                if (this.currentMemoryUsage + imageSize > this.memoryThreshold) {
+                    // 清理一些缓存释放内存
+                    this.cleanupLRU(imageSize * 2);
+                }
+                
+                // 如果缓存已满，删除最旧的条目
+                if (this.cache.size >= this.maxCacheSize) {
+                    const firstKey = this.cache.keys().next().value;
+                    this.removeFromCache(firstKey);
+                }
+                
+                this.cache.set(key, {
+                    image: image,
+                    timestamp: Date.now(),
+                    lastAccessed: Date.now(),
+                    size: imageSize
+                });
+                
+                this.currentMemoryUsage += imageSize;
+            },
+            
+            // 预加载图片
+            preload: function(src) {
+                return new Promise((resolve, reject) => {
+                    // 检查缓存
+                    if (this.has(src)) {
+                        resolve(this.get(src));
+                        return;
+                    }
+                    
+                    const img = new Image();
+                    img.onload = () => {
+                        this.set(src, img);
+                        resolve(img);
+                    };
+                    img.onerror = reject;
+                    img.src = src;
+                });
+            },
+            
+            // 清理过期缓存
+            cleanup: function() {
+                const now = Date.now();
+                for (const [key, cached] of this.cache.entries()) {
+                    if (now - cached.timestamp > this.cacheExpiry) {
+                        this.removeFromCache(key);
+                    }
+                }
+            },
+            
+            // 获取缓存统计信息
+            getStats: function() {
+                return {
+                    cacheSize: this.cache.size,
+                    memoryUsage: Math.round(this.currentMemoryUsage / 1024 / 1024 * 100) / 100, // MB
+                    memoryThreshold: Math.round(this.memoryThreshold / 1024 / 1024 * 100) / 100 // MB
+                };
+            }
+        };
+        
+        // 定期清理缓存
+        setInterval(() => ImageCacheManager.cleanup(), 5 * 60 * 1000); // 每5分钟清理一次
+        
+        // 开发模式下显示缓存统计（可选）
+        if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+            setInterval(() => {
+                const stats = ImageCacheManager.getStats();
+                console.log('图片缓存统计:', stats);
+            }, 30 * 1000); // 每30秒显示一次统计
+        }
+
+        // 分批渐进式图片加载
+        document.addEventListener('DOMContentLoaded', function() {
+            const gallery = document.querySelector('.ios-gallery');
+            const galleryItems = document.querySelectorAll('.ios-gallery-item');
+            const totalImages = galleryItems.length;
+            const firstBatchSize = Math.min(6, totalImages); // 首批加载6张图片
+            const progressIndicator = document.getElementById('loadingProgress');
+            const progressText = document.getElementById('progressText');
+            let loadedCount = 0;
+            let firstBatchLoaded = 0;
+            let preloadStarted = false;
+            
+            // 显示进度指示器
+            if (totalImages > 0) {
+                progressIndicator.classList.add('show');
+            }
+            
+            // 更新进度显示
+            function updateProgress() {
+                const percentage = Math.round((loadedCount / totalImages) * 100);
+                progressText.textContent = `加载中... ${percentage}% (${loadedCount}/${totalImages})`;
+                
+                // 全部加载完成后隐藏进度指示器
+                if (loadedCount >= totalImages) {
+                    setTimeout(function() {
+                        progressIndicator.classList.remove('show');
+                        // 强制重新计算布局，防止空白
+                        forceLayoutRecalculation();
+                    }, 1000);
+                }
+            }
+            
+            // 强制重新计算布局
+            function forceLayoutRecalculation() {
+                // 临时改变display属性强制重排
+                gallery.style.display = 'none';
+                gallery.offsetHeight; // 触发重排
+                gallery.style.display = '';
+                
+                // 确保所有图片都正确显示
+                setTimeout(function() {
+                    galleryItems.forEach(function(item) {
+                        const img = item.querySelector('img');
+                        if (img && img.complete && img.naturalHeight > 0) {
+                            img.classList.add('loaded');
+                            item.classList.add('image-loaded');
+                        }
+                    });
+                }, 100);
+            }
+            
+            // 首先显示画廊容器（避免长时间空白）
+            setTimeout(function() {
+                gallery.classList.add('loaded');
+            }, 100);
+            
+            // 立即开始预加载所有图片（后台静默进行）
+            function startBackgroundPreload() {
+                if (preloadStarted) return;
+                preloadStarted = true;
+                
+                // 收集所有图片URL
+                const allImageUrls = [];
+                galleryItems.forEach(function(item) {
+                    const img = item.querySelector('img');
+                    if (img && img.src) {
+                        allImageUrls.push(img.src);
+                    }
+                });
+                
+                // 后台预加载，不影响用户体验
+                let preloadIndex = 0;
+                function preloadNext() {
+                    if (preloadIndex >= allImageUrls.length) return;
+                    
+                    const url = allImageUrls[preloadIndex];
+                    preloadIndex++;
+                    
+                    // 如果已经缓存，跳过
+                    if (ImageCacheManager.has(url)) {
+                        setTimeout(preloadNext, 10); // 快速跳到下一个
+                        return;
+                    }
+                    
+                    // 后台预加载
+                    ImageCacheManager.preload(url).then(function() {
+                        // 预加载成功，继续下一个
+                        setTimeout(preloadNext, 100); // 控制预加载速度，避免影响主要加载
+                    }).catch(function() {
+                        // 预加载失败，继续下一个
+                        setTimeout(preloadNext, 100);
+                    });
+                }
+                
+                // 延迟开始预加载，让首批图片优先加载
+                setTimeout(preloadNext, 1000);
+            }
+            
+            // 立即开始后台预加载
+            startBackgroundPreload();
+            
+            // 分批加载函数（使用缓存）
+            function loadImageBatch(startIndex, endIndex, callback) {
+                let batchLoadedCount = 0;
+                const batchSize = endIndex - startIndex;
+                
+                for (let i = startIndex; i < endIndex && i < totalImages; i++) {
+                    const item = galleryItems[i];
+                    const img = item.querySelector('img');
+                    const imgSrc = img.src;
+                    
+                    // 检查缓存
+                    if (ImageCacheManager.has(imgSrc)) {
+                        // 从缓存加载
+                        const cachedImg = ImageCacheManager.get(imgSrc);
+                        img.src = cachedImg.src;
+                        img.classList.add('loaded');
+                        item.classList.add('image-loaded');
+                        loadedCount++;
+                        batchLoadedCount++;
+                        updateProgress();
+                        
+                        // 每加载一张图片就触发一次布局检查
+                        setTimeout(function() {
+                            checkLayoutStability();
+                        }, 50);
+                        
+                        // 当前批次加载完成
+                        if (batchLoadedCount === batchSize) {
+                            if (callback) callback();
+                        }
+                    } else {
+                        // 使用缓存管理器预加载
+                        ImageCacheManager.preload(imgSrc).then(function(cachedImg) {
+                            img.src = cachedImg.src;
+                            img.classList.add('loaded');
+                            item.classList.add('image-loaded');
+                            loadedCount++;
+                            batchLoadedCount++;
+                            updateProgress();
+                            
+                            // 每加载一张图片就触发一次布局检查
+                            setTimeout(function() {
+                                checkLayoutStability();
+                            }, 50);
+                            
+                            // 当前批次加载完成
+                            if (batchLoadedCount === batchSize) {
+                                if (callback) callback();
+                            }
+                        }).catch(function() {
+                            // 即使图片加载失败也要计数
+                            item.classList.add('image-loaded');
+                            loadedCount++;
+                            batchLoadedCount++;
+                            updateProgress();
+                            
+                            if (batchLoadedCount === batchSize) {
+                                if (callback) callback();
+                            }
+                        });
+                    }
+                }
+            }
+            
+            // 检查布局稳定性
+            function checkLayoutStability() {
+                // 检查是否有图片加载完成但未显示
+                galleryItems.forEach(function(item) {
+                    const img = item.querySelector('img');
+                    if (img && img.complete && img.naturalHeight > 0 && !img.classList.contains('loaded')) {
+                        img.classList.add('loaded');
+                        item.classList.add('image-loaded');
+                    }
+                });
+                
+                // 如果画廊容器高度为0，强制重新计算
+                if (gallery.offsetHeight === 0 && loadedCount > 0) {
+                    forceLayoutRecalculation();
+                }
+            }
+            
+            // 第一批：立即加载前6张图片
+            loadImageBatch(0, firstBatchSize, function() {
+                firstBatchLoaded = firstBatchSize;
+                
+                // 第一批加载完成后，开始逐步加载剩余图片
+                if (firstBatchSize < totalImages) {
+                    loadRemainingImages();
+                }
+            });
+            
+            // 逐步加载剩余图片
+            function loadRemainingImages() {
+                const batchSize = 4; // 每批加载4张
+                let currentBatch = firstBatchSize;
+                
+                function loadNextBatch() {
+                    if (currentBatch >= totalImages) return;
+                    
+                    const nextBatchEnd = Math.min(currentBatch + batchSize, totalImages);
+                    
+                    loadImageBatch(currentBatch, nextBatchEnd, function() {
+                        currentBatch = nextBatchEnd;
+                        
+                        // 延迟加载下一批，避免一次性请求过多
+                        if (currentBatch < totalImages) {
+                            setTimeout(loadNextBatch, 300);
+                        }
+                    });
+                }
+                
+                // 稍微延迟开始加载剩余图片
+                setTimeout(loadNextBatch, 500);
+            }
+            
+            // 监听窗口大小变化，重新计算布局
+            window.addEventListener('resize', function() {
+                setTimeout(forceLayoutRecalculation, 100);
+            });
+            
+            // 页面可见性变化时重新检查布局
+            document.addEventListener('visibilitychange', function() {
+                if (!document.hidden) {
+                    setTimeout(checkLayoutStability, 200);
+                }
+            });
+        });
         
         function openImagePreview(index, imageUrl) {
             currentImageIndex = index;
