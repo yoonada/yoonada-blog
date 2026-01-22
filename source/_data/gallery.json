@@ -2,6 +2,7 @@
   {
     "name": "婚礼",
     "cover": "https://yoonada-lareinawang.oss-cn-shenzhen.aliyuncs.com/photo-album/wedding/IRIS1428.jpg",
+    "cover_local": "/medias/gallery/婚礼/cover.jpg",
     "date": "2025.12.31",
     "description": "婚礼",
     "url_name": "婚礼",
@@ -182,6 +183,7 @@
   {
     "name": "婚纱照",
     "cover": "https://yoonada-lareinawang.oss-cn-shenzhen.aliyuncs.com/photo-album/wedding-photos/7198154.jpg",
+    "cover_local": "/medias/gallery/婚纱照/cover.jpg",
     "date": "2025.07.19",
     "description": "婚纱照",
     "url_name": "婚纱照",
@@ -350,6 +352,7 @@
   {
     "name": "Love",
     "cover": "https://yoonada.oss-cn-shenzhen.aliyuncs.com/blog/images/gallery/Love/1.jpg",
+    "cover_local": "/medias/gallery/Love/cover.jpg",
     "date": "2024.09",
     "description": "Love",
     "url_name": "Love",
