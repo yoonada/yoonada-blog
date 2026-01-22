@@ -231,9 +231,8 @@
             <div class="ios-gallery">
                 <% for (var i = 0, len = photos.length; i < len; i++) { %>
                     <% var my_album = photos[i]; %>
-                    <% var imgUrl = my_album.img_local || my_album.img_url; %>
-                    <div class="ios-gallery-item" data-aos="zoom-in-up" onclick="openImagePreview(<%- i %>, '<%- imgUrl %>')">
-                        <img src="<%- imgUrl %>" alt="<%- my_album.title %>" loading="lazy" />
+                    <div class="ios-gallery-item" data-aos="zoom-in-up" onclick="openImagePreview(<%- i %>, '<%- my_album.img_url %>')">
+                        <img src="<%- my_album.img_url %>" alt="<%- my_album.title %>" loading="lazy" />
                         <div class="gallery-overlay">
                             <%- my_album.title %>
                         </div>
@@ -267,7 +266,7 @@
         var currentImageIndex = 0;
         var imageUrls = [
             <% for (var j = 0; j < photos.length; j++) { %>
-                '<%- (photos[j].img_local || photos[j].img_url) %>'<% if (j < photos.length - 1) { %>,<% } %>
+                '<%- photos[j].img_url %>'<% if (j < photos.length - 1) { %>,<% } %>
             <% } %>
         ];
         

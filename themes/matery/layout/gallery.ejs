@@ -194,13 +194,12 @@
                         <% var gallery = site.data.gallery; %>
                         <% for (var i = 0, len = gallery.length; i < len; i++) { %>
                             <% var photo = gallery[i]; %>
-                            <% var cover = photo.cover_local || photo.cover; %>
-                            <% if (cover){ %>
+                            <% if (photo.cover){ %>
                             <div class="photo col s12 m6 l4" data-spmid="./<%- photo.url_name %>">
                                 <div class="img-item">
                                     <a href="./<%- photo.url_name %>">
 
-                                        <img src="/medias/loading.svg" data-src="<%- cover %>" class="responsive-img" alt="img"+<%- i %> style="width: 100%; height: auto; object-fit: cover;" />
+                                        <img src="/medias/loading.svg" data-src="<%- photo.cover %>" class="responsive-img" alt="img"+<%- i %> style="width: 100%; height: auto; object-fit: cover;" />
                                         <div class="biaotiss">
                                             <div class="album-name">“ <%- photo.name %> ”</div>
                                             <div class="album-date">“ <%- photo.date %> ”</div>
