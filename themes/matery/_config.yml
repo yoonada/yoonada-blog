@@ -539,31 +539,6 @@ libs:
 # The post featured images that needs to be displayed when there is no images.
 # 无文章特色图片时需要显示的文章特色图片.
 featureImages:
-#- https://yoonada.oss-cn-shenzhen.aliyuncs.com/blog/images/featureimages/1.jpg
-#- https://yoonada.oss-cn-shenzhen.aliyuncs.com/blog/images/featureimages/2.jpg
-#- https://yoonada.oss-cn-shenzhen.aliyuncs.com/blog/images/featureimages/3.jpg
-#- https://yoonada.oss-cn-shenzhen.aliyuncs.com/blog/images/featureimages/4.jpg
-#- https://yoonada.oss-cn-shenzhen.aliyuncs.com/blog/images/featureimages/5.jpg
-#- https://yoonada.oss-cn-shenzhen.aliyuncs.com/blog/images/featureimages/6.jpg
-#- https://yoonada.oss-cn-shenzhen.aliyuncs.com/blog/images/featureimages/7.jpg
-#- https://yoonada.oss-cn-shenzhen.aliyuncs.com/blog/images/featureimages/8.jpg
-#- https://yoonada.oss-cn-shenzhen.aliyuncs.com/blog/images/featureimages/9.jpg
-#- https://yoonada.oss-cn-shenzhen.aliyuncs.com/blog/images/featureimages/10.jpg
-#- https://yoonada.oss-cn-shenzhen.aliyuncs.com/blog/images/featureimages/11.jpg
-#- https://yoonada.oss-cn-shenzhen.aliyuncs.com/blog/images/featureimages/12.jpg
-#- https://yoonada.oss-cn-shenzhen.aliyuncs.com/blog/images/featureimages/13.jpg
-#- https://yoonada.oss-cn-shenzhen.aliyuncs.com/blog/images/featureimages/14.jpg
-#- https://yoonada.oss-cn-shenzhen.aliyuncs.com/blog/images/featureimages/15.jpg
-#- https://yoonada.oss-cn-shenzhen.aliyuncs.com/blog/images/featureimages/16.jpg
-#- https://yoonada.oss-cn-shenzhen.aliyuncs.com/blog/images/featureimages/17.jpg
-#- https://yoonada.oss-cn-shenzhen.aliyuncs.com/blog/images/featureimages/18.jpg
-#- https://yoonada.oss-cn-shenzhen.aliyuncs.com/blog/images/featureimages/19.jpg
-#- https://yoonada.oss-cn-shenzhen.aliyuncs.com/blog/images/featureimages/20.jpg
-#- https://yoonada.oss-cn-shenzhen.aliyuncs.com/blog/images/featureimages/21.jpg
-#- https://yoonada.oss-cn-shenzhen.aliyuncs.com/blog/images/featureimages/22.jpg
-#- https://yoonada.oss-cn-shenzhen.aliyuncs.com/blog/images/featureimages/23.jpg
-
-
 - https://yoonada.oss-cn-shenzhen.aliyuncs.com/blog/images/featureimages/000001.jpg
 - https://yoonada.oss-cn-shenzhen.aliyuncs.com/blog/images/featureimages/000002.jpg
 - https://yoonada.oss-cn-shenzhen.aliyuncs.com/blog/images/featureimages/000003.jpg
@@ -572,16 +547,6 @@ featureImages:
 - https://yoonada.oss-cn-shenzhen.aliyuncs.com/blog/images/featureimages/000007.jpg
 - https://yoonada.oss-cn-shenzhen.aliyuncs.com/blog/images/featureimages/000008.jpg
 - https://yoonada.oss-cn-shenzhen.aliyuncs.com/blog/images/featureimages/000009.jpg
-
-#  - /medias/images/000001.jpg
-#  - /medias/images/000002.jpg
-#  - /medias/images/000003.jpg
-#  - /medias/images/000004.jpg
-#  - /medias/images/000005.jpg
-#  - /medias/images/000006.jpg
-#  - /medias/images/000007.jpg
-#  - /medias/images/000008.jpg
-#  - /medias/images/000009.jpg
 
 # default configs that the default policy for every articles/posts
 # default 配置文章的默认转载规则
