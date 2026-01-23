@@ -1,0 +1,151 @@
+<%- partial('_partial/bg-cover') %>
+<style>
+    .video-page-miaoshus {
+        padding: 20px;
+        border: 1px dashed #e6e6e6;
+        color: #969696;
+        position: relative;
+        display: inline-block;
+        width: 95%;
+        background: #fbfbfb50;
+        border-radius: 10px;
+        font-size: 16px;
+        margin: 12px auto;
+    }
+    body.dark .video-page-miaoshus {
+        background: 0 0;
+        border: 1px dashed #888;
+    }
+    .video-gallery {
+        margin: 3.5rem auto 1.5rem;
+        max-width: 1200px;
+        padding: 0 10px;
+    }
+    .video-gallery-grid {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0 -16px;
+    }
+    .video-gallery-grid .video-item {
+        box-sizing: border-box;
+        width: 33.3333%;
+        padding: 0 16px 32px;
+        position: relative;
+        transition: transform .4s ease, box-shadow .4s ease;
+    }
+    @media only screen and (max-width: 992px) {
+        .video-gallery-grid .video-item {
+            width: 50%;
+        }
+    }
+    @media only screen and (max-width: 600px) {
+        .video-gallery-grid .video-item {
+            width: 100%;
+        }
+    }
+    .video-card {
+        padding: .2rem;
+        background-color: #fff;
+        border-radius: 16px;
+        box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+        transition: all .4s cubic-bezier(.63,.15,.03,1.12);
+        margin-bottom: 12px;
+        overflow: hidden;
+    }
+    .video-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+    }
+    .video-cover {
+        width: 100%;
+        height: 230px;
+        border-radius: 14px;
+        object-fit: cover;
+        display: block;
+    }
+    .video-biaotiss {
+        padding: 12px 14px 16px;
+        color: #444;
+        text-align: center;
+        line-height: 1.6;
+        font-family: -apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    }
+    .video-biaotiss .video-title {
+        font-size: 18px;
+        font-weight: 700;
+        color: #333;
+        margin-bottom: 4px;
+    }
+    .video-biaotiss .video-desc {
+        font-size: 14px;
+        color: #888;
+    }
+</style>
+
+<main class="content">
+    <div class="container chip-container">
+        <div class="card">
+            <div class="card-content">
+                <div class="tag-title center-align">
+                    <div class="video-page-miaoshus">
+                        <div class="title center-align">“ 视频 ”</div>
+                        “ 想重复回看的瞬间，都在这里。 ”
+                    </div>
+                </div>
+
+                <% if (site.data && site.data.video && site.data.video.length) { %>
+                <div class="video-gallery">
+                    <div class="video-gallery-grid">
+                        <% var videoAlbums = site.data.video; %>
+                        <% for (var i = 0, len = videoAlbums.length; i < len; i++) { %>
+                            <% var album = videoAlbums[i]; %>
+                            <div class="video-item col s12 m6 l4">
+                                <div class="video-card">
+                                    <a href="./<%- album.url_name %>">
+                                        <img src="/medias/loading.svg"
+                                             data-src="<%- album.cover %>"
+                                             class="video-cover responsive-img"
+                                             alt="video-cover-"+<%- i %> />
+                                    </a>
+                                    <div class="video-biaotiss">
+                                        <div class="video-title">“ <%- album.name %> ”</div>
+                                        <% if (album.date) { %>
+                                        <div class="video-desc">“ <%- album.date %> ”</div>
+                                        <% } %>
+                                    </div>
+                                </div>
+                            </div>
+                        <% } %>
+                    </div>
+                </div>
+                <% } else { %>
+                <div class="center-align" style="padding: 40px 0; color: #999;">
+                    暂时还没有配置视频分类。
+                </div>
+                <% } %>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        startVideoCovers()
+        $(window).on('scroll', function(){
+            startVideoCovers()
+        })
+        function startVideoCovers(){
+            $('.video-gallery img').not('[data-isLoaded]').each(function(){
+                var $node = $(this)
+                if(isShowVideo($node)){
+                    loadVideoImg($node)
+                }
+            })
+        }
+        function isShowVideo($node){
+            return $node.offset().top <= $(window).height() + $(window).scrollTop()
+        }
+        function loadVideoImg($img){
+            $img.attr('src', $img.attr('data-src'))
+            $img.attr('data-isLoaded', 1)
+        }
+    </script>
+</main>

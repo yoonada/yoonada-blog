@@ -1,0 +1,149 @@
+<link rel="stylesheet" href="<%- theme.jsDelivr.url %><%- url_for(theme.libs.css.gallery) %>">
+
+<style>
+    .video-detail-miaoshus .title {
+        font-family: MV Boli;
+    }
+    .video-detail-miaoshus {
+        padding: 20px;
+        border: 1px dashed #e6e6e6;
+        color: #969696;
+        position: relative;
+        display: inline-block;
+        width: 75%;
+        background: #fbfbfb50;
+        border-radius: 10px;
+        font-size: 16px;
+        margin: 24px auto 12px;
+    }
+    body.dark .video-detail-miaoshus {
+        background: 0 0;
+        border: 1px dashed #888;
+    }
+    body {
+        overflow: visible!important;
+        overflow-y: visible!important;
+    }
+    .page-footer {
+        display: none
+    }
+    header {
+        background-color: #000;
+    }
+    .video-detail-gallery {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 10px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    .video-detail-item {
+        position: relative;
+        flex: 0 0 calc(33.3333% - 10px);
+        padding: 0 16px 32px;
+        box-sizing: border-box;
+        transition: transform .4s ease, box-shadow .4s ease;
+    }
+    .video-detail-card {
+        padding: .2rem;
+        background-color: #fff;
+        border-radius: 16px;
+        box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+        transition: all .4s cubic-bezier(.63,.15,.03,1.12);
+        margin-bottom: 12px;
+        overflow: hidden;
+    }
+    .video-detail-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+    }
+    .video-detail-card video {
+        width: 100%;
+        height: 230px;
+        object-fit: cover;
+        display: block;
+        border-radius: 14px;
+    }
+    .video-detail-info {
+        padding: 12px 14px 16px;
+        color: #444;
+        text-align: center;
+        line-height: 1.6;
+        font-family: -apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    }
+    .video-detail-info .video-title {
+        font-size: 18px;
+        font-weight: 700;
+        color: #333;
+        margin-bottom: 4px;
+    }
+    .video-detail-info .video-desc {
+        font-size: 14px;
+        color: #888;
+    }
+    @media only screen and (max-width: 768px) {
+        .video-detail-item {
+            flex: 0 0 calc(50% - 10px);
+        }
+    }
+    @media only screen and (max-width: 480px) {
+        .video-detail-item {
+            flex: 0 0 100%;
+        }
+    }
+</style>
+
+<div class="tag-title center-align">
+    <div class="video-detail-miaoshus">
+        <div class="title center-align">
+            “ <%= page.title %> ”
+        </div>
+    </div>
+</div>
+
+<main class="content">
+    <div class="container">
+        <% if (site.data && site.data.video) { %>
+            <% 
+                var albums = site.data.video;
+                var pageTitle = page.title;
+                function getCurrentAlbum(albums, title) {
+                    for (var i = 0; i < albums.length; i++) {
+                        if (albums[i]['name'] == title) {
+                            return albums[i];
+                        }
+                    }
+                }
+                var currentAlbum = getCurrentAlbum(albums, pageTitle);
+                var videos = (currentAlbum && currentAlbum.album) ? currentAlbum.album : [];
+            %>
+            <% if (videos.length) { %>
+                <div class="video-detail-gallery">
+                    <% for (var i = 0, len = videos.length; i < len; i++) { %>
+                        <% var v = videos[i]; %>
+                        <div class="video-detail-item" data-aos="zoom-in-up">
+                            <div class="video-detail-card">
+                                <video src="<%- v.video_url %>" controls playsinline preload="metadata"></video>
+                                <div class="video-detail-info">
+                                    <div class="video-title">
+                                        “ <%- v.title || ('视频 ' + (i + 1)) %> ”
+                                    </div>
+                                    <% if (v.description) { %>
+                                    <div class="video-desc">
+                                        “ <%- v.description %> ”
+                                    </div>
+                                    <% } %>
+                                </div>
+                            </div>
+                        </div>
+                    <% } %>
+                </div>
+            <% } else { %>
+                <div class="center-align" style="padding: 40px 0; color: #999;">
+                    当前分类暂无视频或未在 video.json 中配置。
+                </div>
+            <% } %>
+        <% } %>
+    </div>
+</main>

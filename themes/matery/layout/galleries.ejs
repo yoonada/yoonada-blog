@@ -212,9 +212,9 @@
                             var mediaUrl = my_album.img_url || my_album.video_url;
                             var isVideo = mediaUrl && /(\.mp4|\.webm|\.ogg|\.mov)$/i.test(mediaUrl);
                         %>
-                        <div class="ios-gallery-item" data-aos="zoom-in-up" onclick="openImagePreview(<%- i %>, '<%- mediaUrl %>')">
+                        <div class="ios-gallery-item" data-aos="zoom-in-up" <% if (!isVideo) { %>onclick="openImagePreview(<%- i %>, '<%- mediaUrl %>')" <% } %>>
                             <% if (isVideo) { %>
-                                <video src="<%- mediaUrl %>" muted playsinline preload="metadata"></video>
+                                <video src="<%- mediaUrl %>" controls playsinline preload="metadata"></video>
                             <% } else { %>
                                 <img src="<%- mediaUrl %>" alt="<%- my_album.title || '' %>" loading="lazy" />
                             <% } %>

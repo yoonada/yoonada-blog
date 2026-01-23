@@ -1,0 +1,21 @@
+[
+  {
+    "name": "婚礼视频",
+    "cover": "https://yoonada-lareinawang.oss-cn-shenzhen.aliyuncs.com/photo-album/wedding/IRIS1428.jpg",
+    "date": "2025.12.31",
+    "description": "婚礼视频",
+    "url_name": "婚礼视频",
+    "album": [
+      {
+        "title": "接亲",
+        "description": "接亲视频",
+        "video_url": "https://yoonada-lareinawang.oss-cn-shenzhen.aliyuncs.com/photo-album/videos/01.mp4"
+      },
+      {
+        "title": "婚礼",
+        "description": "婚礼视频",
+        "video_url": "https://yoonada-lareinawang.oss-cn-shenzhen.aliyuncs.com/photo-album/videos/02.mp4"
+      }
+    ]
+  }
+]
