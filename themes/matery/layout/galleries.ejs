@@ -221,24 +221,30 @@
                     }
                 }
                 var currentGallery = getCurrentGallery(galleries, pageTitle);
-                var photos = currentGallery.album;
+                var photos = (currentGallery && currentGallery.album) ? currentGallery.album : [];
             %>
-            <!-- 加载进度指示器 -->
-            <div id="loadingProgress" class="loading-progress">
-                <span id="progressText">加载中... 0%</span>
-            </div>
-            
-            <div class="ios-gallery">
-                <% for (var i = 0, len = photos.length; i < len; i++) { %>
-                    <% var my_album = photos[i]; %>
-                    <div class="ios-gallery-item" data-aos="zoom-in-up" onclick="openImagePreview(<%- i %>, '<%- my_album.img_url %>')">
-                        <img src="<%- my_album.img_url %>" alt="<%- my_album.title %>" loading="lazy" />
-                        <div class="gallery-overlay">
-                            <%- my_album.title %>
+            <% if (photos.length) { %>
+                <!-- 加载进度指示器 -->
+                <div id="loadingProgress" class="loading-progress">
+                    <span id="progressText">加载中... 0%</span>
+                </div>
+                
+                <div class="ios-gallery">
+                    <% for (var i = 0, len = photos.length; i < len; i++) { %>
+                        <% var my_album = photos[i]; %>
+                        <div class="ios-gallery-item" data-aos="zoom-in-up" onclick="openImagePreview(<%- i %>, '<%- my_album.img_url %>')">
+                            <img src="<%- my_album.img_url %>" alt="<%- my_album.title %>" loading="lazy" />
+                            <div class="gallery-overlay">
+                                <%- my_album.title %>
+                            </div>
                         </div>
-                    </div>
-                <% } %>
-            </div>
+                    <% } %>
+                </div>
+            <% } else { %>
+                <div class="center-align" style="padding: 40px 0; color: #999;">
+                    当前相册暂无图片或未在 gallery.json 中配置。
+                </div>
+            <% } %>
         <% } %>
     </div>
     
@@ -262,6 +268,7 @@
         <div id="imageCounter" style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); color: white; font-size: 16px;"></div>
     </div>
     
+    <% if (site.data && site.data.gallery) { %>
     <script>
         var currentImageIndex = 0;
         var imageUrls = [
@@ -745,4 +752,5 @@
             }
         });
     </script>
+    <% } %>
 </main>
