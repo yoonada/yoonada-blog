@@ -30,7 +30,6 @@
     }
     .photo {
         padding: 0 16px 32px!important;
-        display: inline-block;
         position: relative;
         width: 100%;
         transition: transform .4s ease, box-shadow .4s ease;
@@ -97,8 +96,9 @@
     .my-gallery .photo img {
         border-radius: 14px;
         width: 100%;
-        height: auto;
+        height: 230px;
         object-fit: cover;
+        display: block;
     }
     .card .card-content {
         padding: 24px 24px 24px 24px;
@@ -156,6 +156,25 @@
         max-width: 1200px;
         padding: 0 10px;
     }
+    .my-gallery-grid {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0 -16px;
+    }
+    .my-gallery-grid .photo {
+        box-sizing: border-box;
+        width: 33.3333%;
+    }
+    @media only screen and (max-width: 992px) {
+        .my-gallery-grid .photo {
+            width: 50%;
+        }
+    }
+    @media only screen and (max-width: 600px) {
+        .my-gallery-grid .photo {
+            width: 100%;
+        }
+    }
      /*大屏幕下(桌面类)的样式*/
     @media only screen and (min-width: 993px) {
         .text_des h3{
@@ -189,7 +208,7 @@
                     </div>
                 </div>
                 <div class="my-gallery">
-                    <div class="row">
+                    <div class="my-gallery-grid">
                     <% if (site.data && site.data.gallery) { %>
                         <% var gallery = site.data.gallery; %>
                         <% for (var i = 0, len = gallery.length; i < len; i++) { %>
