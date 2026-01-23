@@ -37,34 +37,25 @@
         font-family: MV Boli;
     }
     
-    /* iOS风格瀑布流布局 */
+    /* 相册详情页：规则网格布局，保证从左到右从上到下 */
     .ios-gallery {
-        column-count: 4;
-        column-gap: 8px;
-        padding: 10px;
         max-width: 1200px;
         margin: 0 auto;
-        opacity: 0;
-        transition: opacity 0.5s ease-in-out;
-    }
-    
-    .ios-gallery.loaded {
-        opacity: 1;
+        padding: 10px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
     }
     
     .ios-gallery-item {
-        display: inline-block;
-        width: 100%;
-        margin-bottom: 8px;
-        break-inside: avoid;
         position: relative;
+        flex: 0 0 calc(25% - 10px);
         border-radius: 12px;
         overflow: hidden;
         box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         transition: all 0.3s ease;
         cursor: pointer;
-        background-color: #f5f5f5;
-        min-height: 150px;
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
     }
     
     .ios-gallery-item:hover {
@@ -74,10 +65,18 @@
     
     .ios-gallery-item img {
         width: 100%;
-        height: auto;
+        height: 230px;
+        object-fit: cover;
         display: block;
-        transition: all 0.3s ease;
+        transition: opacity 0.3s ease, transform 0.3s ease;
         opacity: 0;
+    }
+    
+    .ios-gallery-item video {
+        width: 100%;
+        height: 230px;
+        object-fit: cover;
+        display: block;
     }
     
     .ios-gallery-item img.loaded {
@@ -128,12 +127,6 @@
         opacity: 0;
     }
     
-    /* 图片占位背景 */
-    .ios-gallery-item {
-        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-        position: relative;
-    }
-    
     /* 加载进度指示器 */
     .loading-progress {
         position: fixed;
@@ -158,40 +151,23 @@
         100% { transform: rotate(360deg); }
     }
     
-    /* 响应式设计 */
+    /* 响应式设计：不同屏宽列数 */
     @media only screen and (max-width: 1200px) {
-        .ios-gallery {
-            column-count: 3;
-            padding: 8px;
+        .ios-gallery-item {
+            flex: 0 0 calc(33.3333% - 10px);
         }
     }
     
     @media only screen and (max-width: 768px) {
-        .ios-gallery {
-            column-count: 2;
-            column-gap: 6px;
-            padding: 6px;
-        }
         .ios-gallery-item {
-            margin-bottom: 6px;
+            flex: 0 0 calc(50% - 10px);
         }
     }
     
     @media only screen and (max-width: 480px) {
-        .ios-gallery {
-            column-count: 2;
-            column-gap: 4px;
-            padding: 4px;
-        }
         .ios-gallery-item {
-            margin-bottom: 4px;
+            flex: 0 0 100%;
             border-radius: 8px;
-        }
-    }
-    
-    @media only screen and (max-width: 320px) {
-        .ios-gallery {
-            column-count: 1;
         }
     }
 </style>
@@ -231,11 +207,19 @@
                 
                 <div class="ios-gallery">
                     <% for (var i = 0, len = photos.length; i < len; i++) { %>
-                        <% var my_album = photos[i]; %>
-                        <div class="ios-gallery-item" data-aos="zoom-in-up" onclick="openImagePreview(<%- i %>, '<%- my_album.img_url %>')">
-                            <img src="<%- my_album.img_url %>" alt="<%- my_album.title %>" loading="lazy" />
+                        <% 
+                            var my_album = photos[i]; 
+                            var mediaUrl = my_album.img_url || my_album.video_url;
+                            var isVideo = mediaUrl && /(\.mp4|\.webm|\.ogg|\.mov)$/i.test(mediaUrl);
+                        %>
+                        <div class="ios-gallery-item" data-aos="zoom-in-up" onclick="openImagePreview(<%- i %>, '<%- mediaUrl %>')">
+                            <% if (isVideo) { %>
+                                <video src="<%- mediaUrl %>" muted playsinline preload="metadata"></video>
+                            <% } else { %>
+                                <img src="<%- mediaUrl %>" alt="<%- my_album.title || '' %>" loading="lazy" />
+                            <% } %>
                             <div class="gallery-overlay">
-                                <%- my_album.title %>
+                                <%- my_album.title || '' %>
                             </div>
                         </div>
                     <% } %>
@@ -273,7 +257,7 @@
         var currentImageIndex = 0;
         var imageUrls = [
             <% for (var j = 0; j < photos.length; j++) { %>
-                '<%- photos[j].img_url %>'<% if (j < photos.length - 1) { %>,<% } %>
+                '<%- photos[j].img_url || photos[j].video_url %>'<% if (j < photos.length - 1) { %>,<% } %>
             <% } %>
         ];
         
@@ -520,7 +504,7 @@
                 if (preloadStarted) return;
                 preloadStarted = true;
                 
-                // 收集所有图片URL
+                // 收集所有图片URL（仅处理图片元素，视频不参与图片缓存）
                 const allImageUrls = [];
                 galleryItems.forEach(function(item) {
                     const img = item.querySelector('img');
@@ -568,6 +552,19 @@
                 for (let i = startIndex; i < endIndex && i < totalImages; i++) {
                     const item = galleryItems[i];
                     const img = item.querySelector('img');
+                    
+                    // 如果当前项没有图片（例如是视频），直接标记为已加载，避免脚本报错和空白
+                    if (!img) {
+                        item.classList.add('image-loaded');
+                        loadedCount++;
+                        batchLoadedCount++;
+                        updateProgress();
+                        
+                        if (batchLoadedCount === batchSize) {
+                            if (callback) callback();
+                        }
+                        continue;
+                    }
                     const imgSrc = img.src;
                     
                     // 检查缓存
@@ -610,7 +607,8 @@
                                 if (callback) callback();
                             }
                         }).catch(function() {
-                            // 即使图片加载失败也要计数
+                            // 图片加载失败时也要结束加载动画，避免出现永久空白
+                            img.classList.add('loaded');
                             item.classList.add('image-loaded');
                             loadedCount++;
                             batchLoadedCount++;
@@ -631,6 +629,9 @@
                     const img = item.querySelector('img');
                     if (img && img.complete && img.naturalHeight > 0 && !img.classList.contains('loaded')) {
                         img.classList.add('loaded');
+                        item.classList.add('image-loaded');
+                    } else if (!img) {
+                        // 没有图片的项（例如视频），直接标记为已加载，关闭加载动画
                         item.classList.add('image-loaded');
                     }
                 });
