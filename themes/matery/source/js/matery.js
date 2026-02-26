@@ -167,6 +167,50 @@ $(function () {
             }
     });
 
-    // 初始化加载 tooltipped.
     $('.tooltipped').tooltip();
+
+    function showCopyToast(message) {
+        if (window.M && M.toast) {
+            M.toast({html: message});
+        } else {
+            alert(message);
+        }
+    }
+
+    function copyText(text) {
+        if (!text) {
+            return;
+        }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(text).then(function () {
+                showCopyToast('复制成功：' + text);
+            }).catch(function () {
+                fallbackCopyText(text);
+            });
+        } else {
+            fallbackCopyText(text);
+        }
+    }
+
+    function fallbackCopyText(text) {
+        try {
+            var textarea = document.createElement('textarea');
+            textarea.value = text;
+            textarea.style.position = 'fixed';
+            textarea.style.opacity = '0';
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+            showCopyToast('复制成功：' + text);
+        } catch (e) {
+            showCopyToast('复制失败，请手动复制：' + text);
+        }
+    }
+
+    $('.js-copy-contact').on('click', function (e) {
+        e.preventDefault();
+        var value = $(this).data('copy');
+        copyText(value);
+    });
 });

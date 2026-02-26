@@ -4,6 +4,39 @@
     <%- partial('_partial/bg-cover') %>
 <% } %>
 <%- partial('_partial/bg-video') %>
+
+<% if (is_home() && page.current === 1 && theme.icp && theme.icp.enable) { %>
+<div id="homeBeianBar">
+    <a href="<%- url_for(theme.icp.url) %>" target="_blank">
+        <img src="<%- theme.jsDelivr.url %><%- url_for('/medias/icp.png') %>"/>
+        <span><%= theme.icp.text %></span>
+    </a>
+    <% if (theme.gongan && theme.gongan.enable) { %>
+    <a href="<%- theme.gongan.url %>" target="_blank" rel="noreferrer noopener">
+        <img src="https://beian.mps.gov.cn/img/logo01.dd7ff50e.png"/>
+        <span><%- theme.gongan.text %></span>
+    </a>
+    <% } %>
+</div>
+<script>
+    (function () {
+        var bar = document.getElementById('homeBeianBar');
+        if (!bar) {
+            return;
+        }
+        var handleScroll = function () {
+            if (window.scrollY > 10) {
+                bar.style.display = 'none';
+            } else {
+                bar.style.display = 'flex';
+            }
+        };
+        window.addEventListener('scroll', handleScroll);
+        handleScroll();
+    })();
+</script>
+<% } %>
+
 <main class="content">
 
     <% if (page.current === 1

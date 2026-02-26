@@ -172,6 +172,7 @@ socialLink:
   facebook: # https://www.facebook.com/xxx
   twitter: # https://twitter.com/xxx
   qq: 970757399
+  wechat: YoonaDa0915
   weibo: # https://weibo.com/xxx
   zhihu: # https://www.zhihu.com/xxx
   rss: false # true、false
@@ -262,7 +263,7 @@ snowdown:
 # 在”关于”页面中配置个人信息，包括头像、职业和个人介绍.
 profile:
   avatar: https://yoonada.oss-cn-shenzhen.aliyuncs.com/blog/images/featureimages/ava.jpg
-  career: Java开发工程师
+  career: Java开发工程师、后端开发工程师、全栈开发工程师、软件团队主管
   introduction:
 
 # config my projects informations in about page.
@@ -650,7 +651,13 @@ banner:
 icp:
   enable: true
   url: https://beian.miit.gov.cn/
-  text: 粤ICP备20004989号-1
+  text: 粤ICP备20004989号-4
+
+# 公安备案信息尾部显示
+gongan:
+  enable: true
+  url: https://beian.mps.gov.cn/#/query/webSearch?code=44200102445870
+  text: 粤公网安备44200102445870号
 
 # CDN访问加速
 # 第一次使用本功能，一定要先配置url，再`hexo cl && hexo g && hexo d`部署到GitHub的仓库，注意！必须是GitHub的仓库！

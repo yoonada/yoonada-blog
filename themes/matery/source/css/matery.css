@@ -1832,7 +1832,7 @@ thead {
 
 /*尾部样式*/
 footer {
-    padding-bottom: 1px;
+    padding-bottom: 6px;
 }
 
 footer .social-statis {
@@ -1846,6 +1846,85 @@ footer a {
 
 footer .copy-right {
     color: #dbdbdb;
+    text-align: center;
+}
+
+#homeBeianBar {
+    position: fixed;
+    left: 50%;
+    bottom: 16px;
+    transform: translateX(-50%);
+    z-index: 1000;
+    background-color: transparent;
+    color: #fff;
+    padding: 4px 12px;
+    border-radius: 0;
+    font-size: 12px;
+    display: none;
+    align-items: center;
+    gap: 8px;
+    justify-content: center;
+    box-shadow: none;
+}
+
+#homeBeianBar a {
+    color: inherit;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+}
+
+/* 备案图标统一尺寸 */
+#homeBeianBar img,
+#icp img,
+#gongan img {
+    height: 16px;
+    margin-right: 4px;
+    vertical-align: text-bottom;
+}
+
+#icp,
+#gongan {
+    display: inline-flex;
+    align-items: center;
+}
+
+.footer-social {
+    margin-top: 8px;
+    margin-bottom: 6px;
+}
+
+.footer-beian {
+    margin-top: 4px;
+}
+
+@media only screen and (max-width: 600px) {
+    #homeBeianBar {
+        flex-direction: column;
+        bottom: 8px;
+        gap: 4px;
+    }
+
+    #homeBeianBar a {
+        font-size: 11px;
+    }
+
+    footer .copy-right {
+        font-size: 12px;
+        line-height: 1.6;
+    }
+
+    #icp,
+    #gongan {
+        display: block;
+        margin: 2px 0;
+    }
+
+    #icp a,
+    #gongan a {
+        white-space: nowrap;
+    }
 }
 
 /*搜索层样式*/

@@ -5,7 +5,7 @@
 
     <div class="container row center-align"
          style="margin-bottom: <% if (theme.time.enable) { %>15<% } else { %>0<% } %>px !important;">
-        <div class="col s12 m8 l8 copy-right">
+        <div class="col s12 copy-right">
             Copyright&nbsp;&copy;
             <% if (theme.time.year !== new Date().getFullYear()) { %>
                 <span id="year"><%- theme.time.year %>-<%- new Date().getFullYear() %></span>
@@ -94,15 +94,28 @@
                     calcSiteTime();
                 </script>
             <% } %>
-            <br>
+        </div>
+        <div class="col s12 footer-social social-link <%- socialClass %>">
+            <%- partial('_partial/social-link') %>
+        </div>
+        <div class="col s12 footer-beian">
             <% if (theme.icp.enable) { %>
-                <span id="icp"><img src="<%- theme.jsDelivr.url %><%- url_for('/medias/icp.png') %>"
-                                    style="vertical-align: text-bottom;"/>
-                <a href="<%- url_for(theme.icp.url) %>" target="_blank"><%= theme.icp.text %></a>
-            </span>
+                <span id="icp">
+                    <img src="<%- theme.jsDelivr.url %><%- url_for('/medias/icp.png') %>"/>
+                    <a href="<%- url_for(theme.icp.url) %>" target="_blank"><%= theme.icp.text %></a>
+                </span>
+            <% } %>
+            <% if (theme.gongan && theme.gongan.enable) { %>
+                <% var gonganIcon = theme.gongan.icon || 'https://beian.mps.gov.cn/img/logo01.dd7ff50e.png'; %>
+                <span id="gongan" style="margin-left: 8px;">
+                    <a href="<%- theme.gongan.url %>" target="_blank" rel="noreferrer noopener"
+                       style="display: inline-flex; align-items: center; text-decoration: none; height: 20px; line-height: 20px;">
+                        <img src="<%- gonganIcon %>"/>
+                        <span style="margin-left: 5px;"><%- theme.gongan.text %></span>
+                    </a>
+                </span>
             <% } %>
         </div>
-        <div class="col s12 m4 l4 social-link <%- socialClass %>"><%- partial('_partial/social-link') %></div>
     </div>
 </footer>
 
