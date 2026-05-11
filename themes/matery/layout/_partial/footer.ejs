@@ -4,43 +4,30 @@
     <% } %>
 
     <div class="container row center-align"
-         style="margin-bottom: <% if (theme.time.enable) { %>15<% } else { %>0<% } %>px !important;">
-        <div class="col s12 copy-right">
-            Copyright&nbsp;&copy;
+         style="margin-bottom: 0px !important; padding-bottom: 15px;">
+        
+        <!-- Social Icons Section -->
+        <% let socialClass = '' %>
+        <% if (theme.busuanziStatistics && theme.busuanziStatistics.enable) { %>
+            <% socialClass = 'social-statis' %>
+        <% } %>
+        <div class="col s12 footer-social social-link <%- socialClass %>" style="margin-top: 15px; margin-bottom: 10px;">
+            <%- partial('_partial/social-link') %>
+        </div>
+
+        <!-- Copyright Section -->
+        <div class="col s12 copy-right" style="font-size: 0.95rem; color: rgba(255,255,255,0.8); margin-bottom: 8px;">
+            Copyright &copy;
             <% if (theme.time.year !== new Date().getFullYear()) { %>
                 <span id="year"><%- theme.time.year %>-<%- new Date().getFullYear() %></span>
             <% } else { %>
                 <span id="year"><%- theme.time.year %></span>
             <% } %>
-            <a href="<%- url_for('/about') %>" target="_blank"><%- config.author %></a>
-            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
-            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
-            <br>
-            <% if (theme.postInfo.totalCount) { %>
-                &nbsp;<i class="fas fa-chart-area"></i>&nbsp;<%- __('siteTotalWords') %>:&nbsp;<span
-                        class="white-color"><%= totalcount(site) %></span>
-            <% } %>
-            <% let socialClass = '' %>
-            <% if (theme.busuanziStatistics && theme.busuanziStatistics.enable) { %>
-                <% socialClass = 'social-statis' %>
-            <% } %>
-            <% if (theme.busuanziStatistics && theme.busuanziStatistics.totalTraffic) { %>
-                <span id="busuanzi_container_site_pv">
-                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;<%- __('siteTotalVisits') %>:&nbsp;
-                    <span id="busuanzi_value_site_pv" class="white-color"></span>
-            </span>
-            <% } %>
-            <% if (theme.busuanziStatistics && theme.busuanziStatistics.totalNumberOfvisitors) { %>
-                <span id="busuanzi_container_site_uv">
-                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;<%- __('siteTotalVisitors') %>:&nbsp;
-                    <span id="busuanzi_value_site_uv" class="white-color"></span>
-            </span>
-            <% } %>
-            <br>
+            <a href="<%- url_for('/about') %>" target="_blank" style="color: #fff; font-weight: 500; margin-left: 4px;"><%- config.author %></a>
 
             <!-- 运行天数提醒. -->
             <% if (theme.time.enable) { %>
-                <span id="sitetime"> Loading ...</span>
+                &nbsp;|&nbsp;&nbsp;<span id="sitetime" style="color: rgba(255,255,255,0.6);"> Loading ...</span>
                 <script>
                     var calcSiteTime = function () {
                         var seconds = 1000;
@@ -95,23 +82,21 @@
                 </script>
             <% } %>
         </div>
-        <div class="col s12 footer-social social-link <%- socialClass %>">
-            <%- partial('_partial/social-link') %>
-        </div>
-        <div class="col s12 footer-beian">
+        
+        <!-- Beian Section -->
+        <div class="col s12 footer-beian" style="font-size: 0.85rem; color: rgba(255,255,255,0.6);">
             <% if (theme.icp.enable) { %>
-                <span id="icp">
-                    <img src="<%- theme.jsDelivr.url %><%- url_for('/medias/icp.png') %>"/>
-                    <a href="<%- url_for(theme.icp.url) %>" target="_blank"><%= theme.icp.text %></a>
+                <span id="icp" style="margin-right: 15px;">
+                    <a href="<%- url_for(theme.icp.url) %>" target="_blank" style="color: inherit;"><%= theme.icp.text %></a>
                 </span>
             <% } %>
             <% if (theme.gongan && theme.gongan.enable) { %>
                 <% var gonganIcon = theme.gongan.icon || 'https://beian.mps.gov.cn/img/logo01.dd7ff50e.png'; %>
-                <span id="gongan" style="margin-left: 8px;">
+                <span id="gongan">
                     <a href="<%- theme.gongan.url %>" target="_blank" rel="noreferrer noopener"
-                       style="display: inline-flex; align-items: center; text-decoration: none; height: 20px; line-height: 20px;">
-                        <img src="<%- gonganIcon %>"/>
-                        <span style="margin-left: 5px;"><%- theme.gongan.text %></span>
+                       style="display: inline-flex; align-items: center; text-decoration: none; color: inherit;">
+                        <img src="<%- gonganIcon %>" style="width: 14px; height: 14px; margin-right: 4px;" alt="gongan" />
+                        <span><%- theme.gongan.text %></span>
                     </a>
                 </span>
             <% } %>

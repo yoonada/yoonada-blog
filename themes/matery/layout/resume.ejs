@@ -1,0 +1,79 @@
+<%- partial('_partial/bg-cover') %>
+
+<style type="text/css">
+    .resume-container {
+        margin-top: -30px;
+        padding-bottom: 30px;
+    }
+    .resume-card {
+        border-radius: 12px !important;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1) !important;
+    }
+    .resume-header {
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.9);
+        text-align: center;
+        border-bottom: 1px solid #eee;
+    }
+    .resume-header h1 {
+        margin: 0;
+        font-size: 1.8rem;
+        color: #333;
+        font-weight: 500;
+    }
+    .resume-header p {
+        margin: 8px 0 0 0;
+        color: #777;
+        font-size: 0.95rem;
+    }
+    .resume-header .download-btn {
+        margin-top: 15px;
+        display: inline-block;
+        padding: 8px 20px;
+        border-radius: 20px;
+        background: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
+        color: #fff;
+        text-decoration: none;
+        font-size: 0.9rem;
+        transition: all 0.3s ease;
+    }
+    .resume-header .download-btn:hover {
+        box-shadow: 0 4px 15px rgba(0, 242, 254, 0.4);
+        transform: translateY(-2px);
+    }
+    .resume-iframe-container {
+        position: relative;
+        width: 100%;
+        height: 80vh;
+        background: #f5f5f5;
+    }
+    .resume-iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+        display: block;
+    }
+    /* 适配移动端高度 */
+    @media only screen and (max-width: 600px) {
+        .resume-iframe-container {
+            height: 70vh;
+        }
+    }
+</style>
+
+<main class="content">
+    <div class="container resume-container">
+        <div class="card resume-card" data-aos="fade-up">
+            <div class="resume-header">
+                <h1>个人简历</h1>
+                <p>Welcome to view my resume online</p>
+            </div>
+            <div class="resume-iframe-container">
+                <iframe class="resume-iframe" src="https://yoonada-space.oss-cn-shenzhen.aliyuncs.com/resume/YoonaDa%27s%20resume.pdf#navpanes=0&view=FitH" title="Resume">
+                    您的浏览器不支持直接在页面内预览 PDF。请点击上方的“下载 PDF”按钮查看。
+                </iframe>
+            </div>
+        </div>
+    </div>
+</main>

@@ -19,9 +19,12 @@ menu:
   # Contact:
   #   url: /contact
   #   icon: fas fa-comments
-  Friends:
-    url: /friends
-    icon: fas fa-address-book
+  # Friends:
+  #   url: /friends
+  #   icon: fas fa-address-book
+  Resume:
+    url: /resume
+    icon: fas fa-file-pdf
   Gallery:
     url: /gallery
     icon: fas fa-images
@@ -263,7 +266,7 @@ snowdown:
 # 在”关于”页面中配置个人信息，包括头像、职业和个人介绍.
 profile:
   avatar: https://yoonada.oss-cn-shenzhen.aliyuncs.com/blog/images/featureimages/ava.jpg
-  career: Java开发工程师、后端开发工程师、全栈开发工程师、软件团队主管
+  career: Java开发工程师、全栈开发工程师、软件团队主管
   introduction:
 
 # config my projects informations in about page.
