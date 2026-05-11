@@ -1,7 +1,10 @@
 <style type="text/css">
     /* don't remove. */
     .about-cover {
-        height: 75vh;
+        height: 40vh; /* 缩小背景图高度 */
+    }
+    .about-container {
+        margin-top: -60px; /* 让卡片整体上移一点，覆盖背景边缘 */
     }
 </style>
 
@@ -13,37 +16,157 @@
         <div class="card">
             <div class="card-content">
                 <div class="row">
-                    <div class="post-statis col l4 hide-on-med-and-down" data-aos="zoom-in-right">
-                        <%- partial('_partial/post-statis') %>
-                    </div>
-                    <div class="col s12 m12 l4">
+                    <div class="col s12">
                         <div class="profile center-align">
-                            <div class="avatar">
-                                <img src="<%- theme.jsDelivr.url %><%- url_for(theme.profile.avatar) %>" alt="<%- config.author %>"
-                                     class="circle responsive-img avatar-img">
-                            </div>
                             <div class="author">
-                                <div class="post-statis hide-on-large-only" data-aos="zoom-in-right">
-                                    <%- partial('_partial/post-statis') %>
-                                </div>
-                                <div class="title"><%- config.author %></div>
+                                <div class="title" style="margin-top: 10px;"><%- config.author %></div>
                                 <div class="career"><%- theme.profile.career %></div>
-                                <div class="social-link hide-on-large-only" data-aos="zoom-in-left">
+                                <div class="social-link" data-aos="zoom-in-up">
                                     <%- partial('_partial/social-link') %>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="col l4 hide-on-med-and-down" data-aos="zoom-in-left">
-                        <div class="social-link">
-                            <%- partial('_partial/social-link') %>
                         </div>
                     </div>
                 </div>
 
                 <div class="introduction center-align" data-aos="fade-up"><%= theme.profile.introduction %></div>
 
-                <%- partial('_widget/post-charts') %>
+                <!-- 个人简历部分 -->
+                <style type="text/css">
+                    .resume-section {
+                        margin: 40px 0;
+                        padding-top: 20px;
+                        border-top: 1px dashed #eee;
+                    }
+                    .resume-header {
+                        text-align: center;
+                        margin-bottom: 20px;
+                    }
+                    .resume-header h2 {
+                        font-size: 1.6rem;
+                        color: #34495e;
+                        font-weight: 500;
+                        margin-bottom: 10px;
+                    }
+                    .resume-header .download-btn {
+                        display: inline-block;
+                        padding: 6px 18px;
+                        border-radius: 20px;
+                        background: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
+                        color: #fff;
+                        text-decoration: none;
+                        font-size: 0.9rem;
+                        transition: all 0.3s ease;
+                        box-shadow: 0 2px 8px rgba(0, 242, 254, 0.3);
+                    }
+                    .resume-header .download-btn:hover {
+                        box-shadow: 0 4px 15px rgba(0, 242, 254, 0.5);
+                        transform: translateY(-2px);
+                    }
+                    .resume-iframe-container {
+                        position: relative;
+                        width: 100%;
+                        height: 85vh;
+                        background: #f5f5f5;
+                        border-radius: 8px;
+                        overflow: hidden;
+                        box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
+                    }
+                    .resume-iframe {
+                        width: 100%;
+                        height: 100%;
+                        border: none;
+                        display: block;
+                    }
+                    @media only screen and (max-width: 600px) {
+                        .resume-iframe-container {
+                            height: 70vh;
+                        }
+                    }
+                    /* 美化 about 页面其他部分 */
+                    .about-container .card {
+                        border-radius: 16px; /* 增加圆角，更柔和 */
+                        box-shadow: 0 15px 35px rgba(0,0,0,0.08); /* 加深立体感阴影 */
+                        padding-top: 25px; /* 卡片顶部加点留白 */
+                        padding-bottom: 25px;
+                        position: relative;
+                        z-index: 10;
+                    }
+                    /* 覆盖原主题中作者信息的负边距 */
+                    .profile .author {
+                        margin-top: 0 !important;
+                    }
+                    .profile .title {
+                        font-weight: 600;
+                        color: #2c3e50;
+                        margin-top: 0;
+                        font-size: 2.2rem; /* 名字稍微放大 */
+                        letter-spacing: 2px;
+                    }
+                    .profile .career {
+                        color: #7f8c8d;
+                        font-size: 1.15rem;
+                        margin: 10px 0 0;
+                        font-weight: 300;
+                        letter-spacing: 1px;
+                    }
+                    #aboutme .social-link {
+                        margin-top: 20px;
+                        margin-bottom: 30px;
+                        display: flex;
+                        justify-content: center;
+                        gap: 20px;
+                    }
+                    #aboutme .social-link a {
+                        width: 48px !important;
+                        height: 48px !important;
+                        line-height: 46px !important;
+                        text-align: center;
+                        border-radius: 50% !important;
+                        background: #fff !important;
+                        color: #34495e !important;
+                        border: 1px solid #e0e6ed !important;
+                        font-size: 1.3rem !important;
+                        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+                        box-shadow: 0 4px 15px rgba(0,0,0,0.05) !important;
+                        display: inline-block;
+                        padding: 0;
+                        margin: 0 !important;
+                    }
+                    #aboutme .social-link a:hover {
+                        background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%) !important;
+                        color: white !important;
+                        border-color: transparent !important;
+                        transform: translateY(-5px) scale(1.1) !important;
+                        box-shadow: 0 10px 20px rgba(161, 140, 209, 0.4) !important;
+                    }
+                    /* PDF 预览框美化 */
+                    .resume-iframe-container {
+                        position: relative;
+                        width: 100%;
+                        height: 85vh;
+                        background: #fff;
+                        border-radius: 12px;
+                        overflow: hidden;
+                        box-shadow: 0 0 0 1px #eee, 0 10px 30px rgba(0,0,0,0.08);
+                        padding: 10px;
+                    }
+                    .resume-iframe {
+                        width: 100%;
+                        height: 100%;
+                        border: none;
+                        display: block;
+                        border-radius: 8px;
+                        background-color: #fff;
+                    }
+                </style>
+                <div class="resume-section" data-aos="fade-up">
+                    <div class="resume-iframe-container">
+                        <iframe class="resume-iframe" src="https://yoonada-space.oss-cn-shenzhen.aliyuncs.com/resume/YoonaDa%27s%20resume.pdf#toolbar=0&navpanes=0&view=FitH" title="Resume">
+                            您的浏览器不支持直接在页面内预览 PDF。
+                        </iframe>
+                    </div>
+                </div>
 
                 <% if (theme.myProjects && theme.myProjects.enable) { %>
                 <%- partial('_widget/my-projects') %>
